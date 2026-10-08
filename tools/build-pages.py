@@ -364,6 +364,12 @@ def lanes_html():
     <dt>PS effort</dt><dd>{AUG_TOTAL:,.0f} person-hrs on 24 committed working weeks</dd>
     <dt>Team</dt><dd>10 PS people · ~8.6 FTE program average</dd>
     <dt>Readiness</dt><dd>Live-production remediation + 3 open compliance gates → Low readiness (1/8)</dd></dl></div>
+  <div class="sz-lane"><h3>Augmented</h3><span class="sz-tag">ai tooling</span>
+    <div class="big">24 wk</div>
+    <dl><dt>How</dt><dd>Same team as Traditional + AI tooling efficiency — faster code gen, assisted testing, smarter debugging</dd>
+    <dt>PS effort</dt><dd>{AUGMENTED_TOTAL:,.0f} person-hrs on 24 committed working weeks (~10% efficiency gain)</dd>
+    <dt>Team</dt><dd>10 PS people · ~7.7 FTE program average</dd>
+    <dt>Readiness</dt><dd>Low readiness, same as Traditional — no org restructuring, proven path to AI-native</dd></dl></div>
   <div class="sz-lane sz-lane--cond"><h3>AI-Native</h3><span class="sz-tag sz-tag--conditional">conditional</span>
     <div class="big">{L['quantum-leap']['duration_weeks_range']} wk</div>
     <dl><dt>How</dt><dd>Senior-weighted team directing an agent fleet (core-accountability floor: 3 Intent Architects, 2 Agent Orchestrators)</dd>
@@ -371,7 +377,7 @@ def lanes_html():
     <dt>Team</dt><dd>9 PS people · ~7.3 FTE program average</dd>
     <dt>Readiness</dt><dd>Conditional — M1-M5 provisionally assumed yellow for a customer meeting; not evidenced</dd></dl></div>
 </div>
-<p class="sz-banner"><b>AI-Native is conditional and provisional.</b> It only holds if Beyond commits to the AI-native way of working: daily decision velocity, empowered business owners, AI tooling approval. Beyond's AI readiness is scored Low (1/8 today); the ~13–34% native band is a motivator figure for discussion, not a validated projection.</p>
+<p class="sz-banner"><b>Three delivery options.</b> Traditional is the committed baseline. Augmented captures AI tooling gains without restructuring the team. AI-Native is conditional and requires customer commitment to an AI-native operating model.</p>
 <p class="sz-disclaimer">{BENCHMARK_DISCLAIMER}</p>"""
 
 
