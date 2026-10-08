@@ -515,8 +515,11 @@ def build_scope():
 DOCS = [
     ("discovery", "outputs/00-discovery-brief.md", "Discovery Brief", "The discovery scope and context, as of 2026-10-07."),
     ("delivery", "outputs/02-delivery-plan.md", "Delivery Plan", "The current phased roadmap with dependencies and risks."),
+    ("traditional", "outputs/artifacts/traditional-staffing-plan.md", "Traditional Staffing Plan", "Committed anchor lane: 10 PS resources, 8,280 hours, ~8.6 FTE, 24 weeks."),
+    ("augmented", "outputs/artifacts/augmented-staffing-plan.md", "Augmented Staffing Plan", "Same team as Traditional, 24 weeks, but with ~10% AI tooling efficiency gain (7,452 hours, ~7.7 FTE)."),
     ("efficiency", "outputs/artifacts/efficiency-analysis.md", "AI Efficiency Analysis", "How much AI compresses delivery (category-only fidelity; Low readiness, ~6-16% realized band)."),
-    ("comparison", "outputs/artifacts/estimate-comparison.md", "Estimate Comparison", "Traditional vs AI-Native lane breakdown: timeline, team, hours, delta."),
+    ("ai-native", "outputs/artifacts/ai-native-staffing-plan.md", "AI-Native Staffing Plan", "Conditional lane: 9 PS resources with senior-weighted core floor + agent-amplified seats, 5,380 hours, ~7.3 FTE, 16–21 weeks."),
+    ("comparison", "outputs/artifacts/estimate-comparison.md", "Estimate Comparison", "All three lanes side-by-side: timeline, team, hours, delta."),
 ]
 
 

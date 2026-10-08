@@ -183,7 +183,7 @@
 <nav class="sz-sidebar" aria-label="Section navigation">
   <div class="sz-sidebar-header"><span>Beyond Data Cloud &amp; MCP</span>
     <button class="sz-sidebar-close" aria-label="Close navigation" onclick="document.querySelector('.sz-sidebar').classList.remove('open');document.getElementById('sz-overlay').classList.remove('active');">&#215;</button></div>
-  <div class="sz-sidebar-group"><div class="sz-sidebar-label">Documents</div><a href="#discovery" class="sz-sidebar-link">Discovery Brief</a><a href="#delivery" class="sz-sidebar-link">Delivery Plan</a><a href="#efficiency" class="sz-sidebar-link">AI Efficiency Analysis</a><a href="#comparison" class="sz-sidebar-link">Estimate Comparison</a></div><div class="sz-sidebar-group"><div class="sz-sidebar-label">More</div><a href="index.html" class="sz-sidebar-link">← Overview</a><a href="scope.html" class="sz-sidebar-link">← Full scope</a></div>
+  <div class="sz-sidebar-group"><div class="sz-sidebar-label">Documents</div><a href="#discovery" class="sz-sidebar-link">Discovery Brief</a><a href="#delivery" class="sz-sidebar-link">Delivery Plan</a><a href="#traditional" class="sz-sidebar-link">Traditional Staffing Plan</a><a href="#augmented" class="sz-sidebar-link">Augmented Staffing Plan</a><a href="#efficiency" class="sz-sidebar-link">AI Efficiency Analysis</a><a href="#ai-native" class="sz-sidebar-link">AI-Native Staffing Plan</a><a href="#comparison" class="sz-sidebar-link">Estimate Comparison</a></div><div class="sz-sidebar-group"><div class="sz-sidebar-label">More</div><a href="index.html" class="sz-sidebar-link">← Overview</a><a href="scope.html" class="sz-sidebar-link">← Full scope</a></div>
 </nav>
 <main class="sz-wrap">
 <section id="discovery" class="sz-section sz-doc"><div class="sz-section-eyebrow">Source document</div><p class="sz-banner">The discovery scope and context, as of 2026-10-07.</p><h1>Discovery Brief — Beyond Data Cloud &amp; MCP ARI 2026</h1>
@@ -400,7 +400,338 @@
 <li><code>/Users/ktse/Documents/Clients/Beyond Data Cloud &amp; MCP ARI 2026/data/csv/03-roadmap-phases.csv</code></li>
 <li><code>/Users/ktse/Documents/Clients/Beyond Data Cloud &amp; MCP ARI 2026/outputs/02-delivery-plan.md</code></li>
 <li><code>/Users/ktse/Documents/Clients/Beyond Data Cloud &amp; MCP ARI 2026/outputs/</code></li>
-</ul></section><hr class="sz-divider"><section id="efficiency" class="sz-section sz-doc"><div class="sz-section-eyebrow">Source document</div><p class="sz-banner">How much AI compresses delivery (category-only fidelity; Low readiness, ~6-16% realized band).</p><h1>AI Delivery Efficiency Analysis — Beyond Data Cloud &amp; MCP ARI 2026</h1>
+</ul></section><hr class="sz-divider"><section id="traditional" class="sz-section sz-doc"><div class="sz-section-eyebrow">Source document</div><p class="sz-banner">Committed anchor lane: 10 PS resources, 8,280 hours, ~8.6 FTE, 24 weeks.</p><h1>Traditional Staffing Plan</h1>
+<h2>Overview</h2>
+<p>The <strong>Traditional lane</strong> is the committed anchor — your baseline for delivery scope, timeline, and team.</p>
+<ul>
+<li><strong>Timeline:</strong> 24 weeks (committed)</li>
+<li><strong>Team size:</strong> 10 PS resources</li>
+<li><strong>Hours:</strong> 8,280 person-hours</li>
+<li><strong>FTE:</strong> ~8.6 FTE program-average</li>
+<li><strong>Confidence:</strong> Confirmed (benchmark-based)</li>
+</ul>
+<h2>Team Roster</h2>
+<p><strong>Leadership &amp; Architecture:</strong>
+- <strong>R01</strong> — Project Manager (onshore, full-time) — Both workstreams (Data 360 critical path + MCP Next parallel)
+- <strong>R02</strong> — Solution Architect (onshore, full-time) — Data 360 workstream lead (topology, identity, activation)
+- <strong>R03</strong> — Technical Architect (onshore, full-time) — MCP Next workstream lead (remediation + audit)</p>
+<p><strong>Build Team:</strong>
+- <strong>R04</strong> — Senior Developer (offshore, full-time) — Data 360 critical-path integration load
+- <strong>R05a</strong> — Developer (offshore, full-time) — Volume pod seat 1 (BigQuery sync, enrichment, connectors, Braze)
+- <strong>R05b</strong> — Developer (offshore, full-time) — Volume pod seat 2 (BigQuery sync, enrichment, connectors, Braze)
+- <strong>R06</strong> — Senior MCP Developer (offshore, full-time) — BBY US/Overstock fixes + BuyBuyBaby instrumentation</p>
+<p><strong>Quality &amp; Config:</strong>
+- <strong>R07</strong> — QA Lead (offshore, full-time) — Both workstreams (remediation + compliance hardening)
+- <strong>R08</strong> — QA Engineer (offshore, full-time) — Data 360 activation/paid-media/web/email volume
+- <strong>R09</strong> — Functional Consultant (onshore, half-time) — Config/story authoring, client coordination</p>
+<p><strong>Geographic split:</strong> 6 offshore (build + QA) + 4 onshore (PM, Architects, Consultant)</p>
+<h2>Hours per Resource</h2>
+<table>
+<thead>
+<tr>
+<th>Resource</th>
+<th>Role</th>
+<th>Allocation</th>
+<th>Hours</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R01</td>
+<td>Project Manager</td>
+<td>Full</td>
+<td>1,040</td>
+<td>All phases, both workstreams</td>
+</tr>
+<tr>
+<td>R02</td>
+<td>Solution Architect</td>
+<td>Full</td>
+<td>940</td>
+<td>P0-P4, Data 360 lead</td>
+</tr>
+<tr>
+<td>R03</td>
+<td>Technical Architect</td>
+<td>Full</td>
+<td>940</td>
+<td>P0+P5, MCP Next lead</td>
+</tr>
+<tr>
+<td>R04</td>
+<td>Senior Developer</td>
+<td>Full</td>
+<td>1,040</td>
+<td>P1-P4, integration lead</td>
+</tr>
+<tr>
+<td>R05a</td>
+<td>Developer</td>
+<td>Full</td>
+<td>940</td>
+<td>P1-P4, volume pod</td>
+</tr>
+<tr>
+<td>R05b</td>
+<td>Developer</td>
+<td>Full</td>
+<td>940</td>
+<td>P1-P4, volume pod</td>
+</tr>
+<tr>
+<td>R06</td>
+<td>Senior MCP Developer</td>
+<td>Full</td>
+<td>1,040</td>
+<td>P0+P5, remediation</td>
+</tr>
+<tr>
+<td>R07</td>
+<td>QA Lead</td>
+<td>Full</td>
+<td>1,040</td>
+<td>P1-P4, both workstreams</td>
+</tr>
+<tr>
+<td>R08</td>
+<td>QA Engineer</td>
+<td>Full</td>
+<td>800</td>
+<td>P2-P4, Data 360 volume</td>
+</tr>
+<tr>
+<td>R09</td>
+<td>Functional Consultant</td>
+<td>Half</td>
+<td>500</td>
+<td>P0-P4, config/BA</td>
+</tr>
+<tr>
+<td><strong>TOTAL</strong></td>
+<td></td>
+<td></td>
+<td><strong>8,280</strong></td>
+<td>~8.6 FTE / 24 weeks</td>
+</tr>
+</tbody>
+</table>
+<h2>Phase Timeline</h2>
+<p><strong>Phase 0:</strong> Discovery &amp; Architecture (3 weeks)<br />
+<strong>Phase 1:</strong> Data 360 Foundation (4 weeks)<br />
+<strong>Phase 2:</strong> Enrichment &amp; Personalization (7 weeks)<br />
+<strong>Phase 3:</strong> Paid Media &amp; Web (7 weeks)<br />
+<strong>Phase 4:</strong> Email &amp; Braze (3 weeks)<br />
+<strong>Phase 5:</strong> MCP Next Remediation (parallel, 20 weeks)</p>
+<p>Critical path: E02 → E03 → (E05, E06, E07) = 24 weeks<br />
+Phase 5 runs alongside and is not included in the 24-week sum.</p>
+<h2>What's Included</h2>
+<ul>
+<li>Root-cause audit of MCP Interactions SDK (live-production issues)</li>
+<li>BBY US &amp; Overstock defect remediation + BuyBuyBaby instrumentation</li>
+<li>Data 360 foundation with BigQuery sync (4-table Customer Data Mesh)</li>
+<li>Acxiom enrichment (~39 attributes) + identity resolution</li>
+<li>MCP personalization activation</li>
+<li>5 ad-platform connectors (Google, Facebook, Criteo, Pinterest, TikTok)</li>
+<li>Web experience (10 brand-neutral use cases)</li>
+<li>Email campaigns (7 use cases) + Braze integration</li>
+<li>Full QA, testing, and compliance hardening</li>
+</ul>
+<hr />
+<p><strong>Note:</strong> Hours are benchmark-based, derived from the AI model's training data and general delivery patterns (not Salesforce-validated) — not a commitment. Final figures are confirmed through the applicable commercial agreement.</p></section><hr class="sz-divider"><section id="augmented" class="sz-section sz-doc"><div class="sz-section-eyebrow">Source document</div><p class="sz-banner">Same team as Traditional, 24 weeks, but with ~10% AI tooling efficiency gain (7,452 hours, ~7.7 FTE).</p><h1>Augmented Staffing Plan</h1>
+<h2>Overview</h2>
+<p>The <strong>Augmented lane</strong> uses the same committed team and 24-week calendar as Traditional, but captures AI tooling efficiency gains during delivery.</p>
+<ul>
+<li><strong>Timeline:</strong> 24 weeks (committed, same as Traditional)</li>
+<li><strong>Team size:</strong> Same roster as Traditional (10 PS resources)</li>
+<li><strong>Hours:</strong> 7,452 (10% reduction from Traditional's 8,280 hours)</li>
+<li><strong>FTE:</strong> ~7.7 FTE program-average</li>
+<li><strong>Key difference:</strong> AI tools amplify productivity — same people, same duration, faster/smoother delivery</li>
+</ul>
+<h2>Team Roster</h2>
+<p>All roles are the same as Traditional. Hours per resource drop by ~10% due to:
+- Faster code generation and iteration (AI-assisted development)
+- Automated testing and QA support
+- Smarter debugging and defect resolution
+- AI-powered config and integration assistance</p>
+<p><strong>Disciplines:</strong>
+- <strong>Program Management:</strong> 1 PM (both workstreams, 24 weeks full-time)
+- <strong>Architecture:</strong> 1 Solution Architect (Data 360 lead, full-time) + 1 Technical Architect (MCP Next lead, full-time)
+- <strong>Development:</strong> 1 senior developer (integration lead) + 2 regular developers (volume pod, BigQuery/enrichment/connectors/Braze)
+- <strong>MCP Remediation:</strong> 1 senior MCP developer (BBY US/Overstock fixes + BuyBuyBaby instrumentation)
+- <strong>Quality Assurance:</strong> 1 QA lead (full-time on both workstreams) + 1 QA engineer (Data 360 activation/media/web/email volume)
+- <strong>Configuration &amp; Stories:</strong> 1 Functional Consultant (half-time, config/story authoring)</p>
+<p><strong>Geographic split:</strong> 6 offshore (build + QA) + 4 onshore (PM, Architects, Consultant)</p>
+<h2>Hours Breakdown</h2>
+<table>
+<thead>
+<tr>
+<th>Resource</th>
+<th>Role</th>
+<th>Hours</th>
+<th>Allocation</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PM</td>
+<td>Project Manager</td>
+<td>~1,040</td>
+<td>Full</td>
+<td>Both workstreams, all phases</td>
+</tr>
+<tr>
+<td>SA</td>
+<td>Solution Architect</td>
+<td>~940</td>
+<td>Full</td>
+<td>Data 360 topology &amp; identity lead</td>
+</tr>
+<tr>
+<td>TA</td>
+<td>Technical Architect</td>
+<td>~940</td>
+<td>Full</td>
+<td>MCP Next remediation lead</td>
+</tr>
+<tr>
+<td>Dev-Senior</td>
+<td>Senior Developer</td>
+<td>~1,040</td>
+<td>Full</td>
+<td>Integration-heavy critical path</td>
+</tr>
+<tr>
+<td>Dev-Regular-1</td>
+<td>Developer</td>
+<td>~940</td>
+<td>Full</td>
+<td>Volume pod seat 1</td>
+</tr>
+<tr>
+<td>Dev-Regular-2</td>
+<td>Developer</td>
+<td>~940</td>
+<td>Full</td>
+<td>Volume pod seat 2</td>
+</tr>
+<tr>
+<td>MCP-Dev</td>
+<td>Senior MCP Developer</td>
+<td>~1,040</td>
+<td>Full</td>
+<td>BBY/Overstock/BuyBuyBaby fixes</td>
+</tr>
+<tr>
+<td>QA-Lead</td>
+<td>QA Lead</td>
+<td>~1,040</td>
+<td>Full</td>
+<td>Both workstreams compliance hardening</td>
+</tr>
+<tr>
+<td>QA-Eng</td>
+<td>QA Engineer</td>
+<td>~800</td>
+<td>Full</td>
+<td>Data 360 activation/media/web/email</td>
+</tr>
+<tr>
+<td>BA</td>
+<td>Functional Consultant</td>
+<td>~500</td>
+<td>Half</td>
+<td>Config/story authoring, client coord</td>
+</tr>
+<tr>
+<td><strong>TOTAL</strong></td>
+<td></td>
+<td><strong>~7,452</strong></td>
+<td></td>
+<td>~10% gain vs Traditional</td>
+</tr>
+</tbody>
+</table>
+<h2>Why Augmented?</h2>
+<p>Augmented is the <strong>safest step toward AI delivery</strong> without restructuring the team:</p>
+<ul>
+<li><strong>No org change:</strong> Same team, same roles, same accountability</li>
+<li><strong>Same calendar:</strong> Committed 24-week timeline (no compression risk)</li>
+<li><strong>Lower risk:</strong> Team stays familiar with the engagement scope</li>
+<li><strong>Measurable gain:</strong> 10% efficiency (conservative from the 6–16% Low-readiness band) unlocks ~828 hours of buffer or smoother execution</li>
+<li><strong>Enabler for AI-Native:</strong> Proves the team can work well with AI tools, validating readiness for the more aggressive AI-Native model later</li>
+</ul>
+<h2>How It Differs From Traditional and AI-Native</h2>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Traditional</th>
+<th><strong>Augmented</strong></th>
+<th>AI-Native</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Timeline</strong></td>
+<td>24 weeks</td>
+<td><strong>24 weeks</strong></td>
+<td>16–21 weeks</td>
+</tr>
+<tr>
+<td><strong>Team size</strong></td>
+<td>10 people</td>
+<td><strong>10 people</strong></td>
+<td>9 people</td>
+</tr>
+<tr>
+<td><strong>Hours</strong></td>
+<td>8,280</td>
+<td><strong>7,452</strong></td>
+<td>5,380</td>
+</tr>
+<tr>
+<td><strong>FTE</strong></td>
+<td>~8.6</td>
+<td><strong>~7.7</strong></td>
+<td>~7.3</td>
+</tr>
+<tr>
+<td><strong>Org change</strong></td>
+<td>None</td>
+<td><strong>None</strong></td>
+<td>Yes (orchestrators replace pod)</td>
+</tr>
+<tr>
+<td><strong>Risk</strong></td>
+<td>Low</td>
+<td><strong>Low</strong></td>
+<td>Medium (conditional)</td>
+</tr>
+<tr>
+<td><strong>Efficiency source</strong></td>
+<td>—</td>
+<td><strong>AI tooling</strong></td>
+<td>AI tooling + team restructure</td>
+</tr>
+<tr>
+<td><strong>Readiness gate</strong></td>
+<td>N/A</td>
+<td><strong>Low readiness (6–16%)</strong></td>
+<td>Conditional (13–34%)</td>
+</tr>
+</tbody>
+</table>
+<h2>When to Choose Augmented</h2>
+<ul>
+<li><strong>You want AI efficiency gains without restructuring the team</strong></li>
+<li><strong>Your org isn't ready for AI-native roles (orchestrators, agents)</strong></li>
+<li><strong>You want to de-risk the move to AI by using familiar faces + tools</strong></li>
+<li><strong>You value the same calendar commitment as Traditional (24 weeks)</strong></li>
+</ul>
+<hr />
+<p><strong>Note:</strong> Hours are benchmark-based, derived from the AI model's training data and general delivery patterns (not Salesforce-validated) — not a commitment. Final figures are confirmed through the applicable commercial agreement.</p></section><hr class="sz-divider"><section id="efficiency" class="sz-section sz-doc"><div class="sz-section-eyebrow">Source document</div><p class="sz-banner">How much AI compresses delivery (category-only fidelity; Low readiness, ~6-16% realized band).</p><h1>AI Delivery Efficiency Analysis — Beyond Data Cloud &amp; MCP ARI 2026</h1>
 <h2>So What</h2>
 <p><strong>~6-16% realized delivery efficiency at Low readiness.</strong> A pace and quality lift within the same team shape — not headcount reduction, not a pricing input.</p>
 <p>Where the gains show up on this project:
@@ -506,7 +837,213 @@
 <ul>
 <li><code>/Users/ktse/Documents/Clients/Beyond Data Cloud &amp; MCP ARI 2026/data/efficiency.json</code></li>
 <li><code>/Users/ktse/Documents/Clients/Beyond Data Cloud &amp; MCP ARI 2026/outputs/artifacts/efficiency-analysis.md</code></li>
-</ul></section><hr class="sz-divider"><section id="comparison" class="sz-section sz-doc"><div class="sz-section-eyebrow">Source document</div><p class="sz-banner">Traditional vs AI-Native lane breakdown: timeline, team, hours, delta.</p><h1>Estimate Comparison - Beyond Data Cloud &amp; MCP ARI 2026</h1>
+</ul></section><hr class="sz-divider"><section id="ai-native" class="sz-section sz-doc"><div class="sz-section-eyebrow">Source document</div><p class="sz-banner">Conditional lane: 9 PS resources with senior-weighted core floor + agent-amplified seats, 5,380 hours, ~7.3 FTE, 16–21 weeks.</p><h1>AI-Native Staffing Plan</h1>
+<h2>Overview</h2>
+<p>The <strong>AI-Native lane</strong> restructures the team around senior-weighted core accountability floors and agent-amplified build seats. It's leaner and faster than Traditional, but conditional on your commitment to an AI-native operating model.</p>
+<ul>
+<li><strong>Timeline:</strong> 16–21 weeks (conditional, ~13–34% compression)</li>
+<li><strong>Team size:</strong> 9 PS resources (1 fewer than Traditional)</li>
+<li><strong>Hours:</strong> 5,380 person-hours (~35% reduction from Traditional's 8,280)</li>
+<li><strong>FTE:</strong> ~7.3 FTE program-average</li>
+<li><strong>Confidence:</strong> Conditional (provisional, Solution Lead override for customer discussion)</li>
+<li><strong>Status:</strong> Not yet evidenced; depends on AI-native qualification gates M1–M5</li>
+</ul>
+<h2>Key Differences from Traditional</h2>
+<p><strong>Restructuring principles:</strong></p>
+<ol>
+<li>
+<p><strong>Volume → Agents, not bodies:</strong> Traditional's 2-person developer pod (R05a + R05b) collapses to <strong>1 agent-amplified developer</strong> (Q04) directing agents. Senior leads (Agent Orchestrators Q03a/Q03b) cover the complex work.</p>
+</li>
+<li>
+<p><strong>Un-delegatable accountabilities stay human:</strong> Program Lead, Intent Architects, and QA leads remain full-time senior roles. Agents assist; they don't replace.</p>
+</li>
+<li>
+<p><strong>Sequencing multiplies senior coverage:</strong> Hard problems taken one-at-a-time by a senior directing agents = one senior covers more scope than in Traditional.</p>
+</li>
+<li>
+<p><strong>QA is amplified, not replaced:</strong> Senior QA lead stays full-time; supporting QA drops from full-time (R08) to half-time (Q06) with agent-assisted test generation.</p>
+</li>
+<li>
+<p><strong>Config/BA buys depth fractionally:</strong> Functional Consultant (Q07) narrows to phases 1–3 only (agent-drafted config compresses the window).</p>
+</li>
+</ol>
+<h2>Team Roster</h2>
+<p><strong>Core Accountability Floor:</strong>
+- <strong>Q01</strong> — Program Lead (onshore, full-time) — Un-delegatable relationship/governance, both workstreams
+- <strong>Q02a</strong> — Intent Architect (onshore, full-time) — Data 360 workstream (frames agent fleet intents, owns hard-problem architecture)
+- <strong>Q02b</strong> — Intent Architect (onshore, full-time) — MCP Next workstream (root-cause audit ownership, different platform)</p>
+<p><strong>Agent Orchestrators (replace traditional Developers):</strong>
+- <strong>Q03a</strong> — Agent Orchestrator (offshore, full-time) — Data 360 (directs agents on integration/enrichment/connectors/Braze)
+- <strong>Q03b</strong> — Agent Orchestrator (offshore, full-time) — MCP Next (directs agents on remediation fixes)</p>
+<p><strong>Agent-Amplified Build:</strong>
+- <strong>Q04</strong> — Developer (offshore, full-time) — One agent-amplified seat replaces R05a + R05b's 2-person volume pod</p>
+<p><strong>Quality Assurance:</strong>
+- <strong>Q05</strong> — QA Lead (offshore, full-time) — Agent-amplified, held flat (independent check on agent outputs)
+- <strong>Q06</strong> — QA Engineer (offshore, half-time) — Supporting QA with agent-assisted test generation</p>
+<p><strong>Configuration:</strong>
+- <strong>Q07</strong> — Functional Consultant (onshore, half-time) — Phases 1–3 only (narrower window; agent-drafted config)</p>
+<p><strong>Geographic split:</strong> 4 offshore (orchestrators + QA + developer) + 5 onshore (Program Lead, 2 Intent Architects, QA fractional, Consultant fractional)</p>
+<h2>Hours per Resource</h2>
+<table>
+<thead>
+<tr>
+<th>Resource</th>
+<th>Role</th>
+<th>Allocation</th>
+<th>Hours</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Q01</td>
+<td>Program Lead</td>
+<td>Full</td>
+<td>600</td>
+<td>All phases, both workstreams</td>
+</tr>
+<tr>
+<td>Q02a</td>
+<td>Intent Architect (Data 360)</td>
+<td>Full</td>
+<td>560</td>
+<td>P0-P4, frames agent intents</td>
+</tr>
+<tr>
+<td>Q02b</td>
+<td>Intent Architect (MCP Next)</td>
+<td>Full</td>
+<td>560</td>
+<td>P0+P5, root-cause ownership</td>
+</tr>
+<tr>
+<td>Q03a</td>
+<td>Agent Orchestrator (Data 360)</td>
+<td>Full</td>
+<td>560</td>
+<td>P1-P4, directs agent fleet</td>
+</tr>
+<tr>
+<td>Q03b</td>
+<td>Agent Orchestrator (MCP Next)</td>
+<td>Full</td>
+<td>560</td>
+<td>P0+P5, remediation fix oversight</td>
+</tr>
+<tr>
+<td>Q04</td>
+<td>Agent-Amplified Developer</td>
+<td>Full</td>
+<td>560</td>
+<td>P1-P4, 1 seat replaces 2-person pod</td>
+</tr>
+<tr>
+<td>Q05</td>
+<td>QA Lead (amplified)</td>
+<td>Full</td>
+<td>560</td>
+<td>P1-P4, independent check</td>
+</tr>
+<tr>
+<td>Q06</td>
+<td>QA Engineer (fractional)</td>
+<td>Half</td>
+<td>280</td>
+<td>P2-P4, agent-assisted testing</td>
+</tr>
+<tr>
+<td>Q07</td>
+<td>Functional Consultant (fractional)</td>
+<td>Half</td>
+<td>200</td>
+<td>P1-P3, config authoring</td>
+</tr>
+<tr>
+<td><strong>TOTAL</strong></td>
+<td></td>
+<td></td>
+<td><strong>5,380</strong></td>
+<td>~7.3 FTE / 16–21 weeks</td>
+</tr>
+</tbody>
+</table>
+<h2>Phase Timeline</h2>
+<p><strong>Compressed schedule (16–21 weeks vs. Traditional's 24):</strong></p>
+<p>Phase 0: 3 weeks<br />
+Phase 1: 4 weeks<br />
+Phase 2: 7 weeks<br />
+Phase 3: 7 weeks<br />
+Phase 4: 3 weeks<br />
+<strong>Critical path total:</strong> 24 weeks compressed by ~13–34% (efficiency native_band) = <strong>16–21 weeks</strong></p>
+<p>Phase 5 (MCP Next): 13–17 weeks (parallel, compressed from 20)</p>
+<h2>How It Works: Three Adjustments</h2>
+<p><strong>Adjustment 1: Volume → Agents</strong><br />
+Traditional: R04 (senior dev) + R05a + R05b (2 regular devs) = 3 developers<br />
+AI-Native: Q03a/Q03b (2 senior orchestrators) + Q04 (1 agent-amplified dev) = 3 roles, but senior-weighted</p>
+<p>The agent fleet absorbs the routine config/integration volume (BigQuery sync, enrichment, connectors, Braze). One human builder remains because this project's regulated-legacy shape (live-production remediation + 3 open compliance gates) earns a critical-path human builder rather than a fully agent-run pod.</p>
+<p><strong>Adjustment 2: QA Stays Human</strong><br />
+Traditional: R07 (full) + R08 (full) = 2 QA people<br />
+AI-Native: Q05 (full) + Q06 (half) = 1.5 FTE</p>
+<p>QA is agent-amplified, never agent-replaced. An agent can't be the independent check on its own output. Compliance hardening window doesn't shrink.</p>
+<p><strong>Adjustment 3: Config Buys Depth Fractionally</strong><br />
+Traditional: R09 (half, phases 0–4) = 0.5 FTE<br />
+AI-Native: Q07 (half, phases 1–3) = 0.25 FTE</p>
+<p>Agent-drafted config compresses the window this function is actively needed. Phases 0 (no build yet) and 4 (email/Braze handoff is Q03a/Q04's work, not config authoring) drop out.</p>
+<h2>Qualifications &amp; Risks</h2>
+<p><strong>This lane is conditional.</strong> It depends on all five must-haves being green:</p>
+<table>
+<thead>
+<tr>
+<th>Gate</th>
+<th>Status</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>M1</strong> — Decision velocity (client makes calls fast)</td>
+<td>Yellow (assumed)</td>
+<td>Not confirmed; to be asked in customer meeting</td>
+</tr>
+<tr>
+<td><strong>M2</strong> — Delivery cadence (daily standups, demo/decide)</td>
+<td>Yellow (assumed)</td>
+<td>Staffing draft's own schedule is phase-gated (red on evidence); assuming customer could move to looser cadence, unconfirmed</td>
+</tr>
+<tr>
+<td><strong>M3</strong> — Executive sponsor (named, empowered)</td>
+<td>Yellow (assumed)</td>
+<td>No executive sponsor named; to be asked</td>
+</tr>
+<tr>
+<td><strong>M4</strong> — AI tooling approval (client allows AI in build)</td>
+<td>Yellow (assumed)</td>
+<td>No statement on AI tooling approval or data-handling policy; to be asked</td>
+</tr>
+<tr>
+<td><strong>M5</strong> — Environment readiness (lower-env connectivity)</td>
+<td>Yellow (assumed)</td>
+<td>G0209: BigQuery SIT/UAT connectivity still open with no owner/date</td>
+</tr>
+</tbody>
+</table>
+<p>If any gate stays red after the customer conversation, this lane reverts to <strong>not-yet</strong> and is removed.</p>
+<h2>When to Choose AI-Native</h2>
+<ul>
+<li><strong>You're ready to restructure the team</strong> (no traditional org chart friction)</li>
+<li><strong>You want to go live 3–8 weeks earlier</strong> (at the cost of different team shapes)</li>
+<li><strong>You're committed to an AI-native operating model</strong> (daily cadence, empowered decisions, AI tooling approved)</li>
+<li><strong>The five qualification gates move to green</strong> (M1–M5 confirmed in the customer meeting)</li>
+</ul>
+<h2>When to Stay with Traditional or Augmented</h2>
+<ul>
+<li><strong>M1–M5 gates remain yellow/red</strong> (not evidenced)</li>
+<li><strong>Your org needs the familiar team structure</strong> (stick with Traditional)</li>
+<li><strong>You want efficiency gains without restructuring</strong> (pick Augmented)</li>
+<li><strong>You want to pilot AI with your team first</strong> (Augmented is the stepping stone)</li>
+</ul>
+<hr />
+<p><strong>Note:</strong> Hours are benchmark-based and conditional on AI-native qualification. This lane is a motivator for customer discussion ("<em>if</em> you commit to this way of working, here's what it would cost") — never presented as achievable without naming the commitment it depends on. Figures are derived from the AI model's training data and general delivery patterns (not Salesforce-validated) — not a commitment.</p></section><hr class="sz-divider"><section id="comparison" class="sz-section sz-doc"><div class="sz-section-eyebrow">Source document</div><p class="sz-banner">All three lanes side-by-side: timeline, team, hours, delta.</p><h1>Estimate Comparison - Beyond Data Cloud &amp; MCP ARI 2026</h1>
 <p><strong>Pricing deferred - timeline, effort, and resourcing complete.</strong> Add an indicative price by supplying bill rates (<code>commercials</code>).</p>
 <blockquote>
 <p><strong>Roster honesty note.</strong> Both rosters and their FTE are a model-derived starting point that requires the Solution Lead's validation; the human owns the final team. The role-folding and allocation calls are judgment - least certain: whether MCP Next warrants a dedicated Technical Architect (R03/Q02b) rather than folding into the Solution Architect, and whether one agent-amplified build seat (Q04) is enough for six L-sized Data 360 workstream epics. Resourcing is a capability still being refined; treat this as decision-support, not a committed staffing plan.</p>
