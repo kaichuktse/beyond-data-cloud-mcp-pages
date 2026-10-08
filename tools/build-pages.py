@@ -395,6 +395,21 @@ def roster_rows():
     return rows, attrs
 
 
+def augmented_rows():
+    rows, attrs = [], []
+    for r in ps_rows:
+        hrs = augmented_hours[r["resource_id"]]
+        rows.append([
+            f'<b>{r["resource_id"]}</b>', e(r["role"]), e(FOCUS.get(r["resource_id"], "")),
+            f'{r["seniority"]} · {r["location"]}', f'P{r["phases_active"]}', r["allocation"],
+            f'<span class="num">{hrs:,.0f}</span>',
+        ])
+        attrs.append("")
+    rows.append(["", "<b>Total</b>", f"{len(ps_rows)} PS people", "", "24 working wk", "", f'<span class="num">{AUGMENTED_TOTAL:,.0f}</span>'])
+    attrs.append(' class="sz-total"')
+    return rows, attrs
+
+
 def native_rows():
     rows, attrs = [], []
     for r in native_roster:
@@ -450,6 +465,7 @@ def build_index():
 # ---------------------------------------------------------------- scope.html
 def build_scope():
     r_rows, r_attrs = roster_rows()
+    a_rows, a_attrs = augmented_rows()
     n_rows, n_attrs = native_rows()
     client = [[f'<b>{r["resource_id"]}</b>', e(r["role"]), e(FOCUS.get(r["resource_id"], "")), f'P{r["phases_active"]}', r["allocation"]] for r in client_rows]
     cats = sorted({g["category"] for g in gaps})
@@ -482,6 +498,8 @@ def build_scope():
         '<hr class="sz-divider">',
         section("schedule-aug", "Traditional · Committed Anchor", "Epic schedule · 24 working weeks",
                 gantt("aug") + '<p class="g-legend">Bars = working weeks · Critical path: E02 → E03 → (E05, E06, E07) · E01 runs as parallel track</p>'),
+        section("schedule-augmented", "Augmented · AI Tooling Efficiency", "Epic schedule · 24 working weeks (same as Traditional)",
+                gantt("aug") + '<p class="g-legend">Same schedule as Traditional — AI tooling gains reduce hours by ~10%, not calendar duration</p>'),
         section("schedule-native", "AI-Native · Conditional", "Epic schedule · 16–21 working weeks",
                 gantt("native") + '<p class="g-legend">Same as Traditional, compressed by efficiency native_band — conditional on customer commitment to AI-native operating model</p>'),
         section("schedule-table", "Epic Schedule", "Start / end week by lane",
@@ -491,9 +509,12 @@ def build_scope():
         section("team-aug", "Traditional · Committed Anchor", "Hours per resource",
                 table(["ID", "Role", "Focus", "Level", "Phases", "Alloc.", "Hours"], r_rows, row_attrs=r_attrs)
                 + '<p class="sz-note">Hours = allocation × active phases × committed phase weeks × 40. Phase breakdown: P0 3 · P1 4 · P2 7 · P3 7 · P4 3 weeks.</p>'),
+        section("team-augmented", "Augmented · AI Tooling Efficiency", "Hours per resource",
+                table(["ID", "Role", "Focus", "Level", "Phases", "Alloc.", "Hours"], a_rows, row_attrs=a_attrs)
+                + '<p class="sz-note">Same roster as Traditional with ~10% efficiency gain from AI tooling. Hours = Traditional hours × 90%. Total: 7,452 hrs (~7.7 FTE). No org restructuring — proven path to AI-native.</p>'),
         section("team-native", "AI-Native · Conditional", "Hours per resource",
                 table(["ID", "Role", "Focus", "Level", "Phases", "Alloc.", "Hours"], n_rows, row_attrs=n_attrs)
-                + '<p class="sz-note">AI-native clock: P0 3 · P1 4 · P2 7 · P3 7 · P4 3 weeks (same as traditional; parallel P5 compresses 20 → 13–17 wk). Conditional on qualification gate.</p>'),
+                + '<p class="sz-note">Different roster with senior-weighted core floor + agent-amplified seats. Phase clock same as traditional (P0 3 · P1 4 · P2 7 · P3 7 · P4 3 weeks); parallel P5 compresses 20 → 13–17 wk. Conditional on qualification gate.</p>'),
         section("team-client", "Client-side", f"What Beyond staffs · ~{CLIENT_TOTAL:,} person-hrs",
                 table(["ID", "Role", "Responsibility", "Phases", "Alloc."], client) if client else "<p>No client-side roles specified.</p>"
                 + '<p class="sz-note">Client responsibilities: Acxiom contract/licensing, BigQuery schema/Data Mesh maintenance, Governance/CoE/training, UAT execution.</p>'),
@@ -508,8 +529,8 @@ def build_scope():
     ])
     nav = [
         ("Overview", [("#summary", "Executive Summary"), ("#solution", "Architecture Decisions"), ("#epics", "Epics & Sizing"), ("#delivery", "Phases & Dependencies")]),
-        ("Delivery Options", [("#lanes", "Lane Comparison"), ("#schedule-aug", "Gantt · Traditional"), ("#schedule-native", "Gantt · AI-Native"), ("#schedule-table", "Epic Start / End Weeks")]),
-        ("Team", [("#team-aug", "Hours · Traditional"), ("#team-native", "Hours · AI-Native"), ("#team-client", "Client-side Roles")]),
+        ("Delivery Options", [("#lanes", "Lane Comparison"), ("#schedule-aug", "Gantt · Traditional"), ("#schedule-augmented", "Gantt · Augmented"), ("#schedule-native", "Gantt · AI-Native"), ("#schedule-table", "Epic Start / End Weeks")]),
+        ("Team", [("#team-aug", "Hours · Traditional"), ("#team-augmented", "Hours · Augmented"), ("#team-native", "Hours · AI-Native"), ("#team-client", "Client-side Roles")]),
         ("Analysis", [("#efficiency", "AI Efficiency"), ("#gaps", "Gaps & Risks")]),
         ("More", [("index.html", "← Overview"), ("docs.html", "Source documents →")]),
     ]
