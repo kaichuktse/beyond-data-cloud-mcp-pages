@@ -20,7 +20,7 @@ from pathlib import Path
 import markdown
 
 ROOT = Path(__file__).resolve().parent.parent
-SITE = ROOT / "site"
+SITE = ROOT / "docs"
 DERIVE_HOURS = Path.home() / ".claude/plugins/cache/scopezilla-dev/scopezilla-dev/1.29.0/scripts/derive-hours.py"
 GENERATED = "October 2026"
 
