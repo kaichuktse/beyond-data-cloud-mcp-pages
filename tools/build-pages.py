@@ -75,6 +75,12 @@ native_hours = {
 ps_rows = [r for r in roster if r["side"] == "ps"]
 client_rows = [r for r in roster if r["side"] == "client"]
 AUG_TOTAL = sum(aug_hours[r["resource_id"]] for r in ps_rows)
+
+# Augmented hours: Traditional with ~10% efficiency gain (middle of 6-16% Low readiness band)
+EFFICIENCY_GAIN = 0.10  # 10% = efficiency reduces hours to 90% of traditional
+augmented_hours = {rid: hours * (1 - EFFICIENCY_GAIN) for rid, hours in aug_hours.items()}
+AUGMENTED_TOTAL = sum(augmented_hours[r["resource_id"]] for r in ps_rows)
+
 NATIVE_TOTAL = sum(native_hours.values())
 CLIENT_TOTAL = 0  # Beyond has no client-side roles in resource-plan
 
@@ -548,7 +554,7 @@ def build_docs():
 
 # ---------------------------------------------------------------- staffing.html
 def build_staffing():
-    # Build a unified staffing plan showing both lanes side-by-side
+    # Build a unified staffing plan showing all three lanes side-by-side
     trad_by_role = {}
     for r in ps_rows:
         role = r["role"]
@@ -574,7 +580,8 @@ def build_staffing():
         # Traditional row(s)
         for tr in trad_resources:
             tech = tr.get("skills_needed", "Integration, config, QA")[:45]
-            hrs = aug_hours.get(tr["resource_id"], 0)
+            trad_hrs = aug_hours.get(tr["resource_id"], 0)
+            aug_hrs = augmented_hours.get(tr["resource_id"], 0)
             alloc_label = "Full" if tr["allocation"] == "full" else "Half"
             staffing_rows.append([
                 f'<b>{tr["resource_id"]}</b>',
@@ -584,8 +591,8 @@ def build_staffing():
                 e(tech),
                 f'{int(tr["count"])}',
                 alloc_label,
-                f'<span class="num">{hrs:,.0f}</span>',
-                '<span class="num">—</span>',
+                f'<span class="num">{trad_hrs:,.0f}</span>',
+                f'<span class="num">{aug_hrs:,.0f}</span>',
                 '<span class="num">—</span>',
             ])
 
@@ -609,16 +616,17 @@ def build_staffing():
 
     body = "".join([
         section("staffing", "Resource Allocation", "Staffing Plan",
-            f'<p>This staffing plan spans three delivery lanes: <b>Traditional</b> (committed anchor, {AUG_TOTAL:,.0f} PS hours, '
-            f'~8.6 FTE over 24 weeks), <b>Augmented</b> (same team, same duration, AI tooling gain), and <b>AI-Native</b> (conditional, '
-            f'{NATIVE_TOTAL:,.0f} PS hours, ~7.3 FTE over 16–21 weeks). The two PS rosters reflect different team shapes for each delivery model: '
-            f'traditional is offshore-weighted volume + onshore oversight; AI-native is senior-weighted core floor + agent-amplified seats.</p>'
-            + f'<p style="color: var(--sf-text-weak); font-size: 13px; margin: var(--space-md) 0;"><b>Location breakdown:</b> Traditional: 6 offshore (build + QA) + 4 onshore (PM, SA, TA, Consultant). AI-Native: 4 offshore (orchestrators + QA + developer) + 5 onshore (Program Lead, 2 Intent Architects, 2 QA/Consultant fractional).</p>'
+            f'<p>This staffing plan spans three delivery lanes: <b>Traditional</b> (committed anchor, {AUG_TOTAL:,.0f} PS hours, ~8.6 FTE, 24 weeks), '
+            f'<b>Augmented</b> (same {AUG_TOTAL:,.0f} → {AUGMENTED_TOTAL:,.0f} PS hours after ~10% efficiency gain, ~7.7 FTE, 24 weeks), '
+            f'and <b>AI-Native</b> (conditional, {NATIVE_TOTAL:,.0f} PS hours, ~7.3 FTE, 16–21 weeks). '
+            f'Augmented keeps the same team and calendar but captures AI tooling efficiency gains. AI-Native is leaner and shorter, requiring commitment to an AI-native way of working.</p>'
+            + f'<p style="color: var(--sf-text-weak); font-size: 13px; margin: var(--space-md) 0;"><b>Geographic split:</b> Traditional/Augmented: 6 offshore (build + QA) + 4 onshore (PM, SA, TA, Consultant). AI-Native: 4 offshore (Agent Orchestrators + QA) + 5 onshore (Program Lead, 2 Intent Architects, QA/Consultant fractional).</p>'
             + table(
                 ["Resource", "Role", "Seniority", "Location", "Technology / Domain", "Count", "Allocation", "Traditional Hrs", "Augmented Hrs", "AI-Native Hrs"],
                 staffing_rows
             )
-            + '<p class="sz-note"><b>Hours by resource across phases:</b> Traditional = committed baseline (24 weeks). Augmented = same team, same 24 weeks, AI tooling gain (10–18% compression, not shown separately). AI-Native = conditional, subject to qualification gate, 16–21 weeks, ~13–34% compression. Count = number of people in this role (1 per row per convention). Allocation = "Full" (1.0 FTE when active) or "Half" (0.5 FTE).</p>'
+            + '<p class="sz-note"><b>How to read this table:</b> Each row is one resource (one person). Traditional and Augmented share the same roster but different hours (Augmented = Traditional × 90% due to ~10% efficiency gain from AI tooling). AI-Native is a different roster (different roles, especially Agent Orchestrators). Count = number of people in this role (always 1 per row). Allocation = work intensity when active (Full = 1.0 FTE, Half = 0.5 FTE).</p>'
+            + f'<p class="sz-note"><b>Hours basis:</b> Traditional hours are budgeted for 24 committed weeks. Augmented hours reflect the same deliverables with ~10% efficiency uplift (conservative end of the 6–16% Low-readiness band from efficiency analysis). AI-Native hours are compressed per the ~13–34% native_band and conditional on meeting the AI-native qualification gates.</p>'
             + f'<p class="sz-disclaimer">{BENCHMARK_DISCLAIMER}</p>'),
     ])
 
