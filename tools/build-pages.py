@@ -642,6 +642,6 @@ if __name__ == "__main__":
     SITE.mkdir(exist_ok=True)
     build_index()
     build_scope()
-    build_staffing()
+    # build_staffing()  # DISABLED: too confusing with role IDs (Q03a, Q04, etc.)
     build_docs()
     print(f"site built: {SITE}  (traditional {AUG_TOTAL:,.0f} hrs, AI-native {NATIVE_TOTAL:,.0f} hrs)")
