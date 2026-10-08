@@ -50,18 +50,20 @@ The **AI-Native lane** restructures the team around senior-weighted core account
 
 ## Hours per Resource
 
-| Resource | Role | Allocation | Hours | Notes |
-|----------|------|-----------|-------|-------|
-| Q01 | Program Lead | Full | 600 | All phases, both workstreams |
-| Q02a | Intent Architect (Data 360) | Full | 560 | P0-P4, frames agent intents |
-| Q02b | Intent Architect (MCP Next) | Full | 560 | P0+P5, root-cause ownership |
-| Q03a | Agent Orchestrator (Data 360) | Full | 560 | P1-P4, directs agent fleet |
-| Q03b | Agent Orchestrator (MCP Next) | Full | 560 | P0+P5, remediation fix oversight |
-| Q04 | Agent-Amplified Developer | Full | 560 | P1-P4, 1 seat replaces 2-person pod |
-| Q05 | QA Lead (amplified) | Full | 560 | P1-P4, independent check |
-| Q06 | QA Engineer (fractional) | Half | 280 | P2-P4, agent-assisted testing |
-| Q07 | Functional Consultant (fractional) | Half | 200 | P1-P3, config authoring |
-| **TOTAL** | | | **5,380** | ~7.3 FTE / 16–21 weeks |
+**AI-Native phase weeks:** P0=3, P1=4, P2=7, P3=7, P4=3 (same critical path weeks as Traditional; the 16–21 week range applies to the compressed calendar with efficiency gain)
+
+| Resource | Role | Phases | Allocation | Hours | Notes |
+|----------|------|--------|-----------|-------|-------|
+| Q01 | Program Lead | 0-4 | Full | 960 | (3+4+7+7+3)×40 = 24×40 |
+| Q02a | Intent Architect (Data 360) | 0-4 | Full | 960 | (3+4+7+7+3)×40 = 24×40 |
+| Q02b | Intent Architect (MCP Next) | 0,5 | Full | 920 | (3+20)×40 = 23×40 |
+| Q03a | Agent Orchestrator (Data 360) | 1-4 | Full | 840 | (4+7+7+3)×40 = 21×40 |
+| Q03b | Agent Orchestrator (MCP Next) | 0,5 | Full | 920 | (3+20)×40 = 23×40 |
+| Q04 | Agent-Amplified Developer | 1-4 | Full | 840 | (4+7+7+3)×40 = 21×40 |
+| Q05 | QA Lead (agent-amplified) | 1-4 | Full | 840 | (4+7+7+3)×40 = 21×40 |
+| Q06 | QA Engineer (fractional) | 2-4 | Half | 340 | (7+7+3)×40×0.5 = 17×20 |
+| Q07 | Functional Consultant | 1-3 | Half | 360 | (4+7+7)×40×0.5 = 18×20 |
+| **TOTAL** | | | | **6,980** | ~7.3 FTE / critical path 24wk |
 
 ## Phase Timeline
 

@@ -431,6 +431,7 @@
 <tr>
 <th>Resource</th>
 <th>Role</th>
+<th>Phases</th>
 <th>Allocation</th>
 <th>Hours</th>
 <th>Notes</th>
@@ -440,75 +441,86 @@
 <tr>
 <td>R01</td>
 <td>Project Manager</td>
+<td>0-4</td>
 <td>Full</td>
-<td>1,040</td>
-<td>All phases, both workstreams</td>
+<td>960</td>
+<td>(3+4+7+7+3)×40 = 24×40</td>
 </tr>
 <tr>
 <td>R02</td>
 <td>Solution Architect</td>
+<td>0-4</td>
 <td>Full</td>
-<td>940</td>
-<td>P0-P4, Data 360 lead</td>
+<td>960</td>
+<td>(3+4+7+7+3)×40 = 24×40</td>
 </tr>
 <tr>
 <td>R03</td>
 <td>Technical Architect</td>
+<td>0,5</td>
 <td>Full</td>
-<td>940</td>
-<td>P0+P5, MCP Next lead</td>
+<td>920</td>
+<td>(3+20)×40 = 23×40</td>
 </tr>
 <tr>
 <td>R04</td>
 <td>Senior Developer</td>
+<td>1-4</td>
 <td>Full</td>
-<td>1,040</td>
-<td>P1-P4, integration lead</td>
+<td>840</td>
+<td>(4+7+7+3)×40 = 21×40</td>
 </tr>
 <tr>
 <td>R05a</td>
 <td>Developer</td>
+<td>1-4</td>
 <td>Full</td>
-<td>940</td>
-<td>P1-P4, volume pod</td>
+<td>840</td>
+<td>(4+7+7+3)×40 = 21×40</td>
 </tr>
 <tr>
 <td>R05b</td>
 <td>Developer</td>
+<td>1-4</td>
 <td>Full</td>
-<td>940</td>
-<td>P1-P4, volume pod</td>
+<td>840</td>
+<td>(4+7+7+3)×40 = 21×40</td>
 </tr>
 <tr>
 <td>R06</td>
 <td>Senior MCP Developer</td>
+<td>0,5</td>
 <td>Full</td>
-<td>1,040</td>
-<td>P0+P5, remediation</td>
+<td>920</td>
+<td>(3+20)×40 = 23×40</td>
 </tr>
 <tr>
 <td>R07</td>
 <td>QA Lead</td>
+<td>1-4</td>
 <td>Full</td>
-<td>1,040</td>
-<td>P1-P4, both workstreams</td>
+<td>840</td>
+<td>(4+7+7+3)×40 = 21×40</td>
 </tr>
 <tr>
 <td>R08</td>
 <td>QA Engineer</td>
+<td>2-4</td>
 <td>Full</td>
-<td>800</td>
-<td>P2-P4, Data 360 volume</td>
+<td>680</td>
+<td>(7+7+3)×40 = 17×40</td>
 </tr>
 <tr>
 <td>R09</td>
 <td>Functional Consultant</td>
+<td>0-4</td>
 <td>Half</td>
-<td>500</td>
-<td>P0-P4, config/BA</td>
+<td>480</td>
+<td>(3+4+7+7+3)×40×0.5 = 24×20</td>
 </tr>
 <tr>
 <td><strong>TOTAL</strong></td>
+<td></td>
 <td></td>
 <td></td>
 <td><strong>8,280</strong></td>
@@ -563,93 +575,106 @@ Phase 5 runs alongside and is not included in the 24-week sum.</p>
 - <strong>Configuration &amp; Stories:</strong> 1 Functional Consultant (half-time, config/story authoring)</p>
 <p><strong>Geographic split:</strong> 6 offshore (build + QA) + 4 onshore (PM, Architects, Consultant)</p>
 <h2>Hours Breakdown</h2>
+<p><strong>Augmented uses the same roster as Traditional. Hours are Traditional × 90% (10% efficiency gain from AI tooling):</strong></p>
 <table>
 <thead>
 <tr>
 <th>Resource</th>
 <th>Role</th>
-<th>Hours</th>
+<th>Traditional</th>
+<th>Augmented (–10%)</th>
 <th>Allocation</th>
 <th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>PM</td>
+<td>R01</td>
 <td>Project Manager</td>
-<td>~1,040</td>
+<td>960</td>
+<td>864</td>
 <td>Full</td>
-<td>Both workstreams, all phases</td>
+<td>Phases 0-4</td>
 </tr>
 <tr>
-<td>SA</td>
+<td>R02</td>
 <td>Solution Architect</td>
-<td>~940</td>
+<td>960</td>
+<td>864</td>
 <td>Full</td>
-<td>Data 360 topology &amp; identity lead</td>
+<td>Phases 0-4</td>
 </tr>
 <tr>
-<td>TA</td>
+<td>R03</td>
 <td>Technical Architect</td>
-<td>~940</td>
+<td>920</td>
+<td>828</td>
 <td>Full</td>
-<td>MCP Next remediation lead</td>
+<td>Phases 0,5</td>
 </tr>
 <tr>
-<td>Dev-Senior</td>
+<td>R04</td>
 <td>Senior Developer</td>
-<td>~1,040</td>
+<td>840</td>
+<td>756</td>
 <td>Full</td>
-<td>Integration-heavy critical path</td>
+<td>Phases 1-4</td>
 </tr>
 <tr>
-<td>Dev-Regular-1</td>
+<td>R05a</td>
 <td>Developer</td>
-<td>~940</td>
+<td>840</td>
+<td>756</td>
 <td>Full</td>
-<td>Volume pod seat 1</td>
+<td>Phases 1-4</td>
 </tr>
 <tr>
-<td>Dev-Regular-2</td>
+<td>R05b</td>
 <td>Developer</td>
-<td>~940</td>
+<td>840</td>
+<td>756</td>
 <td>Full</td>
-<td>Volume pod seat 2</td>
+<td>Phases 1-4</td>
 </tr>
 <tr>
-<td>MCP-Dev</td>
+<td>R06</td>
 <td>Senior MCP Developer</td>
-<td>~1,040</td>
+<td>920</td>
+<td>828</td>
 <td>Full</td>
-<td>BBY/Overstock/BuyBuyBaby fixes</td>
+<td>Phases 0,5</td>
 </tr>
 <tr>
-<td>QA-Lead</td>
+<td>R07</td>
 <td>QA Lead</td>
-<td>~1,040</td>
+<td>840</td>
+<td>756</td>
 <td>Full</td>
-<td>Both workstreams compliance hardening</td>
+<td>Phases 1-4</td>
 </tr>
 <tr>
-<td>QA-Eng</td>
+<td>R08</td>
 <td>QA Engineer</td>
-<td>~800</td>
+<td>680</td>
+<td>612</td>
 <td>Full</td>
-<td>Data 360 activation/media/web/email</td>
+<td>Phases 2-4</td>
 </tr>
 <tr>
-<td>BA</td>
+<td>R09</td>
 <td>Functional Consultant</td>
-<td>~500</td>
+<td>480</td>
+<td>432</td>
 <td>Half</td>
-<td>Config/story authoring, client coord</td>
+<td>Phases 0-4</td>
 </tr>
 <tr>
 <td><strong>TOTAL</strong></td>
 <td></td>
-<td><strong>~7,452</strong></td>
+<td><strong>8,280</strong></td>
+<td><strong>7,452</strong></td>
 <td></td>
-<td>~10% gain vs Traditional</td>
+<td>~10% reduction = ~7.7 FTE</td>
 </tr>
 </tbody>
 </table>
@@ -884,11 +909,13 @@ Phase 5 runs alongside and is not included in the 24-week sum.</p>
 - <strong>Q07</strong> — Functional Consultant (onshore, half-time) — Phases 1–3 only (narrower window; agent-drafted config)</p>
 <p><strong>Geographic split:</strong> 4 offshore (orchestrators + QA + developer) + 5 onshore (Program Lead, 2 Intent Architects, QA fractional, Consultant fractional)</p>
 <h2>Hours per Resource</h2>
+<p><strong>AI-Native phase weeks:</strong> P0=3, P1=4, P2=7, P3=7, P4=3 (same critical path weeks as Traditional; the 16–21 week range applies to the compressed calendar with efficiency gain)</p>
 <table>
 <thead>
 <tr>
 <th>Resource</th>
 <th>Role</th>
+<th>Phases</th>
 <th>Allocation</th>
 <th>Hours</th>
 <th>Notes</th>
@@ -898,72 +925,82 @@ Phase 5 runs alongside and is not included in the 24-week sum.</p>
 <tr>
 <td>Q01</td>
 <td>Program Lead</td>
+<td>0-4</td>
 <td>Full</td>
-<td>600</td>
-<td>All phases, both workstreams</td>
+<td>960</td>
+<td>(3+4+7+7+3)×40 = 24×40</td>
 </tr>
 <tr>
 <td>Q02a</td>
 <td>Intent Architect (Data 360)</td>
+<td>0-4</td>
 <td>Full</td>
-<td>560</td>
-<td>P0-P4, frames agent intents</td>
+<td>960</td>
+<td>(3+4+7+7+3)×40 = 24×40</td>
 </tr>
 <tr>
 <td>Q02b</td>
 <td>Intent Architect (MCP Next)</td>
+<td>0,5</td>
 <td>Full</td>
-<td>560</td>
-<td>P0+P5, root-cause ownership</td>
+<td>920</td>
+<td>(3+20)×40 = 23×40</td>
 </tr>
 <tr>
 <td>Q03a</td>
 <td>Agent Orchestrator (Data 360)</td>
+<td>1-4</td>
 <td>Full</td>
-<td>560</td>
-<td>P1-P4, directs agent fleet</td>
+<td>840</td>
+<td>(4+7+7+3)×40 = 21×40</td>
 </tr>
 <tr>
 <td>Q03b</td>
 <td>Agent Orchestrator (MCP Next)</td>
+<td>0,5</td>
 <td>Full</td>
-<td>560</td>
-<td>P0+P5, remediation fix oversight</td>
+<td>920</td>
+<td>(3+20)×40 = 23×40</td>
 </tr>
 <tr>
 <td>Q04</td>
 <td>Agent-Amplified Developer</td>
+<td>1-4</td>
 <td>Full</td>
-<td>560</td>
-<td>P1-P4, 1 seat replaces 2-person pod</td>
+<td>840</td>
+<td>(4+7+7+3)×40 = 21×40</td>
 </tr>
 <tr>
 <td>Q05</td>
-<td>QA Lead (amplified)</td>
+<td>QA Lead (agent-amplified)</td>
+<td>1-4</td>
 <td>Full</td>
-<td>560</td>
-<td>P1-P4, independent check</td>
+<td>840</td>
+<td>(4+7+7+3)×40 = 21×40</td>
 </tr>
 <tr>
 <td>Q06</td>
 <td>QA Engineer (fractional)</td>
+<td>2-4</td>
 <td>Half</td>
-<td>280</td>
-<td>P2-P4, agent-assisted testing</td>
+<td>340</td>
+<td>(7+7+3)×40×0.5 = 17×20</td>
 </tr>
 <tr>
 <td>Q07</td>
-<td>Functional Consultant (fractional)</td>
+<td>Functional Consultant</td>
+<td>1-3</td>
 <td>Half</td>
-<td>200</td>
-<td>P1-P3, config authoring</td>
+<td>360</td>
+<td>(4+7+7)×40×0.5 = 18×20</td>
 </tr>
 <tr>
 <td><strong>TOTAL</strong></td>
 <td></td>
 <td></td>
-<td><strong>5,380</strong></td>
-<td>~7.3 FTE / 16–21 weeks</td>
+<td></td>
+<td><strong>6,980</strong></td>
+<td>~7.3 FTE / critical path 24wk</td>
 </tr>
 </tbody>
 </table>

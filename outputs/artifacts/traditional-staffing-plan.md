@@ -32,19 +32,19 @@ The **Traditional lane** is the committed anchor — your baseline for delivery 
 
 ## Hours per Resource
 
-| Resource | Role | Allocation | Hours | Notes |
-|----------|------|-----------|-------|-------|
-| R01 | Project Manager | Full | 1,040 | All phases, both workstreams |
-| R02 | Solution Architect | Full | 940 | P0-P4, Data 360 lead |
-| R03 | Technical Architect | Full | 940 | P0+P5, MCP Next lead |
-| R04 | Senior Developer | Full | 1,040 | P1-P4, integration lead |
-| R05a | Developer | Full | 940 | P1-P4, volume pod |
-| R05b | Developer | Full | 940 | P1-P4, volume pod |
-| R06 | Senior MCP Developer | Full | 1,040 | P0+P5, remediation |
-| R07 | QA Lead | Full | 1,040 | P1-P4, both workstreams |
-| R08 | QA Engineer | Full | 800 | P2-P4, Data 360 volume |
-| R09 | Functional Consultant | Half | 500 | P0-P4, config/BA |
-| **TOTAL** | | | **8,280** | ~8.6 FTE / 24 weeks |
+| Resource | Role | Phases | Allocation | Hours | Notes |
+|----------|------|--------|-----------|-------|-------|
+| R01 | Project Manager | 0-4 | Full | 960 | (3+4+7+7+3)×40 = 24×40 |
+| R02 | Solution Architect | 0-4 | Full | 960 | (3+4+7+7+3)×40 = 24×40 |
+| R03 | Technical Architect | 0,5 | Full | 920 | (3+20)×40 = 23×40 |
+| R04 | Senior Developer | 1-4 | Full | 840 | (4+7+7+3)×40 = 21×40 |
+| R05a | Developer | 1-4 | Full | 840 | (4+7+7+3)×40 = 21×40 |
+| R05b | Developer | 1-4 | Full | 840 | (4+7+7+3)×40 = 21×40 |
+| R06 | Senior MCP Developer | 0,5 | Full | 920 | (3+20)×40 = 23×40 |
+| R07 | QA Lead | 1-4 | Full | 840 | (4+7+7+3)×40 = 21×40 |
+| R08 | QA Engineer | 2-4 | Full | 680 | (7+7+3)×40 = 17×40 |
+| R09 | Functional Consultant | 0-4 | Half | 480 | (3+4+7+7+3)×40×0.5 = 24×20 |
+| **TOTAL** | | | | **8,280** | ~8.6 FTE / 24 weeks |
 
 ## Phase Timeline
 

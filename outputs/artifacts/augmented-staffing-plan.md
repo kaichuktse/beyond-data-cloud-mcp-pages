@@ -30,19 +30,21 @@ All roles are the same as Traditional. Hours per resource drop by ~10% due to:
 
 ## Hours Breakdown
 
-| Resource | Role | Hours | Allocation | Notes |
-|----------|------|-------|-----------|-------|
-| PM | Project Manager | ~1,040 | Full | Both workstreams, all phases |
-| SA | Solution Architect | ~940 | Full | Data 360 topology & identity lead |
-| TA | Technical Architect | ~940 | Full | MCP Next remediation lead |
-| Dev-Senior | Senior Developer | ~1,040 | Full | Integration-heavy critical path |
-| Dev-Regular-1 | Developer | ~940 | Full | Volume pod seat 1 |
-| Dev-Regular-2 | Developer | ~940 | Full | Volume pod seat 2 |
-| MCP-Dev | Senior MCP Developer | ~1,040 | Full | BBY/Overstock/BuyBuyBaby fixes |
-| QA-Lead | QA Lead | ~1,040 | Full | Both workstreams compliance hardening |
-| QA-Eng | QA Engineer | ~800 | Full | Data 360 activation/media/web/email |
-| BA | Functional Consultant | ~500 | Half | Config/story authoring, client coord |
-| **TOTAL** | | **~7,452** | | ~10% gain vs Traditional |
+**Augmented uses the same roster as Traditional. Hours are Traditional × 90% (10% efficiency gain from AI tooling):**
+
+| Resource | Role | Traditional | Augmented (–10%) | Allocation | Notes |
+|----------|------|-------------|------------------|-----------|-------|
+| R01 | Project Manager | 960 | 864 | Full | Phases 0-4 |
+| R02 | Solution Architect | 960 | 864 | Full | Phases 0-4 |
+| R03 | Technical Architect | 920 | 828 | Full | Phases 0,5 |
+| R04 | Senior Developer | 840 | 756 | Full | Phases 1-4 |
+| R05a | Developer | 840 | 756 | Full | Phases 1-4 |
+| R05b | Developer | 840 | 756 | Full | Phases 1-4 |
+| R06 | Senior MCP Developer | 920 | 828 | Full | Phases 0,5 |
+| R07 | QA Lead | 840 | 756 | Full | Phases 1-4 |
+| R08 | QA Engineer | 680 | 612 | Full | Phases 2-4 |
+| R09 | Functional Consultant | 480 | 432 | Half | Phases 0-4 |
+| **TOTAL** | | **8,280** | **7,452** | | ~10% reduction = ~7.7 FTE |
 
 ## Why Augmented?
 
