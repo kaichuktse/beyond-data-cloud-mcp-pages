@@ -1,0 +1,207 @@
+{
+  "fidelity": "category-only",
+  "model_version": "1.0",
+  "generated_from": {
+    "epics_count": 7,
+    "estimates_count": 7,
+    "has_roadmap": true,
+    "has_resource_plan": false
+  },
+  "task_level": {
+    "blended_band": "~25-45%",
+    "basis": "All 7 epics are T-shirt L; the integration-heavy shape (MCP remediation, BigQuery sync, Acxiom enrichment, 5 ad-platform connectors, Braze) pulls Technical Engineering & QA to the foreground and widens the band per the Integration-heavy default starting band.",
+    "sources": [
+      "[1]",
+      "[3]",
+      "[5]",
+      "[8]"
+    ]
+  },
+  "realization_factor": {
+    "value_range": "0.25-0.35",
+    "row": "regulated-legacy",
+    "rationale": "This is a live-production remediation (E01, no root-cause defect list yet per G0101) running alongside heavy legacy/third-party integration (BigQuery sync, Acxiom, 5 ad platforms, Braze) with three open compliance gates and no named decision-owner anywhere in discovery material \u2014 the regulated-legacy shape, not the mixed-enterprise default.",
+    "drivers": [
+      "Live-production remediation on E01 (G0101)",
+      "Heavy legacy/third-party integration load (BigQuery, Acxiom, 5 ad platforms, Braze)",
+      "Three open compliance gates with no named owner (G0503, G0505, G0605)"
+    ]
+  },
+  "project_level": {
+    "realized_band": "~6-16%",
+    "basis": "task-level \u00d7 realization factor, before readiness modulation. Not a lane input \u2014 the augmented lane compresses by readiness.scenarios[current_scenario].realized_band.",
+    "confidence": "Assumed",
+    "native_band": "~13-34%",
+    "native_basis": "Conditional illustration only \u2014 Solution Lead override (2026-10-07) assumed M1/M3/M4/M5 (previously unknown) and M2 (previously red, phase-gated schedule) all at yellow to produce a motivator figure for an upcoming customer meeting. Not evidenced; verdict reverts to not-yet / no native band if the customer conversation doesn't move these ratings for real.",
+    "native_qualification": "conditional"
+  },
+  "readiness": {
+    "signals": [
+      {
+        "signal": "AI tooling posture",
+        "score": 1,
+        "evidence": "No statement anywhere in discovery material on AI tooling approval, client device/VDI policy, or AI data-handling policy for this engagement (same gap as AI-native qualification M4) \u2014 scored at the model's default unknown value, not evidenced either way."
+      },
+      {
+        "signal": "Delivery velocity / speed bias",
+        "score": 0,
+        "evidence": "The internal staffing draft's own schedule runs discrete phase gates (Discover \u2192 Define \u2192 Design \u2192 Deliver \u2192 SIT/UAT \u2192 UAT \u2192 Deploy \u2192 Scale) with no daily build/demo/decide language anywhere in the source docs \u2014 same evidence behind the AI-native qualification's M2 red rating."
+      },
+      {
+        "signal": "Data & environment hygiene",
+        "score": 0,
+        "evidence": "G0209: lower-environment BigQuery connectivity for SIT/UAT is explicitly unconfirmed, with no named owner or date to close it."
+      },
+      {
+        "signal": "Legal / security / compliance posture",
+        "score": 0,
+        "evidence": "Three open compliance gates with no named owner: G0503 (CPRA activation-target designation ownership gap), G0505 (DMA-suppression enforcement mechanism undefined), G0605/G0806 (income-based pricing legal exposure, no Beyond legal review scheduled)."
+      }
+    ],
+    "total_score": 1,
+    "scenarios": [
+      {
+        "scenario": "Low readiness",
+        "score_range": "0-2",
+        "realized_band": "~5-13%",
+        "narrative": "Gains stay modest until the phase-gated cadence loosens and the open compliance/connectivity gaps close \u2014 per signals, Low is today's state.",
+        "unlock_to_move_up": [
+          "Resolve BigQuery lower-environment connectivity (G0209)",
+          "Name compliance owners for the CPRA / DMA-suppression / income-pricing reviews (G0503, G0505, G0605)"
+        ]
+      },
+      {
+        "scenario": "Mid readiness",
+        "score_range": "3-5",
+        "realized_band": "~6-16%",
+        "narrative": "Standard enterprise cadence with the environment and compliance gaps resolved lands here, even without a daily-cadence commitment.",
+        "unlock_to_move_up": [
+          "Confirm AI tooling approval for the delivery team (AI-native qualification M4)",
+          "Close the three open compliance gates with named owners"
+        ]
+      },
+      {
+        "scenario": "High readiness",
+        "score_range": "6-8",
+        "realized_band": "~7-19%",
+        "narrative": "Conditions favor the upper end once tooling is approved, environments are clean, and the compliance gates close \u2014 a faster client captures more.",
+        "unlock_to_move_up": []
+      }
+    ],
+    "current_scenario": "Low readiness"
+  },
+  "by_category": [
+    {
+      "category": "Technical Engineering & QA",
+      "task_level_band": "~25-45%",
+      "realized_band": "~6-16%",
+      "driving_tasks": [
+        "Create Code (realistic enterprise / legacy)",
+        "Analyze Code & Fix Defects"
+      ],
+      "driving_epics": [
+        "E01",
+        "E02",
+        "E07"
+      ],
+      "sources": [
+        "[1]",
+        "[4]"
+      ],
+      "narrative": "E01's MCP remediation against a live production instance, E02's 4-table BigQuery sync, and E07's Braze connector are all enterprise/legacy integration work, not greenfield \u2014 the review burden [1] keeps this near the low end of the range."
+    },
+    {
+      "category": "Analysis & Design",
+      "task_level_band": "~25-40%",
+      "realized_band": "~6-14%",
+      "driving_tasks": [
+        "Generation of Analysis Models",
+        "Discovery Preparation"
+      ],
+      "driving_epics": [
+        "E03",
+        "E04"
+      ],
+      "sources": [
+        "[2]"
+      ],
+      "narrative": "E03's household-grain Acxiom resolution and E04's cross-entity activation design are both open architecture forks, not routine modeling \u2014 drafting compresses, but the fork resolution itself stays human-bound [2]."
+    },
+    {
+      "category": "Documentation & Knowledge Management",
+      "task_level_band": "~30-50%",
+      "realized_band": "~7-18%",
+      "driving_tasks": [
+        "Generate Documents",
+        "Knowledge Transfer"
+      ],
+      "driving_epics": [
+        "E05",
+        "E06"
+      ],
+      "sources": [
+        "[7]"
+      ],
+      "narrative": "E05's per-platform CPRA designation write-ups and E06's catalog-feed decision documentation are the most reliable category on this project [7], though the underlying ownership decisions (G0503) stay human."
+    },
+    {
+      "category": "Project Management & Operations",
+      "task_level_band": "~15-30%",
+      "realized_band": "~3-11%",
+      "driving_tasks": [
+        "Project Status Reports",
+        "Coordination Meeting Time"
+      ],
+      "driving_epics": [
+        "E01",
+        "E02",
+        "E03",
+        "E04",
+        "E05",
+        "E06",
+        "E07"
+      ],
+      "sources": [
+        "[7]",
+        "[1]"
+      ],
+      "narrative": "A 24-week, 6-phase program with two concurrent tracks (Data 360 build + MCP Next remediation) carries real coordination load; status reporting compresses but the coordination core stays human [1][7]."
+    }
+  ],
+  "by_role_type": [],
+  "human_barriers": [
+    {
+      "activity": "Project Pulse Reports",
+      "why_no_gain": "Trust-building work that AI can summarize but not facilitate."
+    },
+    {
+      "activity": "Stakeholder Alignment",
+      "why_no_gain": "Human-to-human negotiation; AI drafts positions, people decide."
+    },
+    {
+      "activity": "Conflict Resolution",
+      "why_no_gain": "Human judgment."
+    },
+    {
+      "activity": "Beyond legal review of the income-based pricing campaign (G0605/G0806)",
+      "why_no_gain": "A regulatory/reputational judgment call for Beyond's legal function, not a drafting task."
+    },
+    {
+      "activity": "CPRA / DMA-suppression ownership decisions (G0503/G0505)",
+      "why_no_gain": "Needs a named Beyond decision-maker; no technical safeguard substitutes for the ownership gap."
+    },
+    {
+      "activity": "MCP Next root-cause audit review burden (G0101)",
+      "why_no_gain": "Diagnosing undiagnosed live-production defects is senior-judgment work; AI assists triage but doesn't own the diagnosis."
+    }
+  ],
+  "assumptions": [
+    "Benchmarks drawn from published 2022\u20132026 data (Peng et al./GitHub 2022, Paradis et al./Google 2024, METR 2025, BCG\u00d7Harvard, DORA 2024\u20132025, McKinsey 2025, GitClear 2025, Faros AI 2026, Stanford HAI AI Index 2026) plus internal observations.",
+    "Task-level bands converted to project-level via the regulated-legacy realization factor, reflecting the live-production remediation context and open compliance gates \u2014 not the client's industry vertical."
+  ],
+  "caveats": [
+    "Bands are qualitative and project-specific, not guarantees.",
+    "No hours, FTE, or cost implications are computed or implied.",
+    "No AI-native band is shown \u2014 the qualification verdict is not-yet (M2 red: phase-gated cadence; M1/M3/M4/M5 unknown). The path to AI-native is naming a decision-maker (M1), moving to daily build/demo/decide (M2), naming an executive sponsor (M3), confirming AI tooling approval (M4), and confirming Day-1 data/environment readiness (M5)."
+  ]
+}

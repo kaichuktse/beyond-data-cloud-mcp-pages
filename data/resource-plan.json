@@ -1,0 +1,112 @@
+[
+  {
+    "resource_id": "R01",
+    "role": "Project / Program Manager",
+    "seniority": "regular",
+    "location": "onshore",
+    "count": 1,
+    "allocation": "full",
+    "phases_active": "0-4",
+    "side": "ps",
+    "justification": "Single PM spans both workstreams (Data 360 critical path + MCP Next parallel track) — customer relationship, gate decisions, scope governance across the whole 24wk program plus the 20wk MCP Next lane. Phase 5 (MCP Next) excluded: R03 is the dedicated Technical Architect leading that track full-time; PM oversight stays bound to the 24-week critical-path calendar, not a second concurrent full-time commitment."
+  },
+  {
+    "resource_id": "R02",
+    "role": "Solution Architect",
+    "seniority": "senior",
+    "location": "onshore",
+    "count": 1,
+    "allocation": "full",
+    "phases_active": "0-4",
+    "side": "ps",
+    "justification": "Named lead for the Data 360 workstream (E02-E07) — Data Space/Data Share topology, identity-resolution grain, cross-entity activation design; the regulated-legacy shape (3 open compliance gates, no named owner) keeps this role senior and continuously engaged, not folded onto build."
+  },
+  {
+    "resource_id": "R03",
+    "role": "Technical Architect",
+    "seniority": "senior",
+    "location": "onshore",
+    "count": 1,
+    "allocation": "full",
+    "phases_active": "0,5",
+    "side": "ps",
+    "justification": "Named lead for the MCP Next workstream (E01) — different platform/skillset than Data 360 (skills_needed: 'MCP Solution/Technical Architect'); owns the root-cause audit (G0101, no defect list yet) against a live production instance, a hard-problem domain that can't fold onto the Data 360 SA."
+  },
+  {
+    "resource_id": "R04",
+    "role": "Developer",
+    "seniority": "senior",
+    "location": "offshore",
+    "count": 1,
+    "allocation": "full",
+    "phases_active": "1-4",
+    "side": "ps",
+    "justification": "Senior build lead for Data 360's critical-path integration load (4-table BigQuery sync, Acxiom enrichment, 5 ad-platform connectors, Braze) — enterprise/legacy integration work per estimates.json's complexity_drivers, not routine config."
+  },
+  {
+    "resource_id": "R05a",
+    "role": "Developer",
+    "seniority": "regular",
+    "location": "offshore",
+    "count": 1,
+    "allocation": "full",
+    "phases_active": "1-4",
+    "side": "ps",
+    "justification": "Volume build pod, seat 1 of 2 — scaled to the Data 360 workstream's weight (6 epics, E02-E07, all T-shirt L) spanning BigQuery sync, enrichment, personalization, 5 ad platforms, web, and email/Braze. Split from a single count:2 row into two count:1 rows per the resource-table convention (one row per named seat)."
+  },
+  {
+    "resource_id": "R05b",
+    "role": "Developer",
+    "seniority": "regular",
+    "location": "offshore",
+    "count": 1,
+    "allocation": "full",
+    "phases_active": "1-4",
+    "side": "ps",
+    "justification": "Volume build pod, seat 2 of 2 — same basis as R05a; two regular seats keep the pod proportional to L×6 scope without over-staffing a single discipline per role."
+  },
+  {
+    "resource_id": "R06",
+    "role": "Developer",
+    "seniority": "senior",
+    "location": "offshore",
+    "count": 1,
+    "allocation": "full",
+    "phases_active": "0,5",
+    "side": "ps",
+    "justification": "Senior MCP developer for the remediation build (skills_needed: 'Senior MCP Developer') — BBY US/Overstock defect fixes plus BuyBuyBaby's net-new Interactions SDK instrumentation, under the MCP Next TA."
+  },
+  {
+    "resource_id": "R07",
+    "role": "Quality Assurance",
+    "seniority": "senior",
+    "location": "offshore",
+    "count": 1,
+    "allocation": "full",
+    "phases_active": "1-4",
+    "side": "ps",
+    "justification": "QA lead spanning both workstreams — the regulated-legacy shape (live-production remediation on E01, 3 open compliance gates on E03/E05/E06) sets a QA floor; a named senior owner, not a token pod, per resourcing-roles.md's anti-under-staffing rule. Phase 5 (MCP Next) allocation reduced to half: full-time on both the 21-week critical-path QA load and the 20-week parallel MCP Next track simultaneously is two full-time jobs for one person — half-time shared oversight on MCP Next is the realistic ceiling alongside full critical-path QA duty. Phase 5 (MCP Next) dropped entirely: R07 is already full-time on the critical-path QA load during the same calendar weeks Phase 5 runs concurrently in — any additional allocation there would put R07 over 1.0 FTE at once, which one person cannot do."
+  },
+  {
+    "resource_id": "R08",
+    "role": "Quality Assurance",
+    "seniority": "regular",
+    "location": "offshore",
+    "count": 1,
+    "allocation": "full",
+    "phases_active": "2-4",
+    "side": "ps",
+    "justification": "QA engineer scaled to Data 360's build volume (E03-E07 activation/paid-media/web/email) under R07 — monotonic with the build pod, not a flat headcount."
+  },
+  {
+    "resource_id": "R09",
+    "role": "Functional Consultant",
+    "seniority": "regular",
+    "location": "onshore",
+    "count": 1,
+    "allocation": "half",
+    "phases_active": "0-4",
+    "side": "ps",
+    "justification": "Config/story authoring and client-coordination support across Data 360 epics — genuinely part-time while active, folds the BA function rather than carrying a full head."
+  }
+]

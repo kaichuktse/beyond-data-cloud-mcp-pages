@@ -1,0 +1,121 @@
+[
+  {
+    "item_id": "E01",
+    "item_type": "epic",
+    "t_shirt_size": "L",
+    "size_drivers": {
+      "integration": {"tier": "M", "signal": "MCP Next ↔ Data 360 connector identity-field mapping needs a joint architecture call (shared Customer ID vs. default Profile ID binding) [KA-23760]; BuyBuyBaby needs net-new SDK/Web Connector instrumentation, not a fix to something live [KA-3063/KA-3067]."},
+      "automation": {"tier": "M", "signal": "Remediation touches existing MCP decisioning/campaign config across 2 live brands plus net-new BuyBuyBaby setup — moderate rework, not a from-scratch build."},
+      "data_model": {"tier": "S", "signal": "No new object model — remediation works within MCP's existing profile/campaign structures."}
+    },
+    "size_rationale": "L — driven by Unknown confidence on scope depth: root-cause defects behind ‘fix the waterfall work’ are not itemized anywhere in source material (G0101), so the real fix could be config-level or platform-level. Sized up, not down, per the Unknown-confidence rule; the cross-track identity-mapping decision and BuyBuyBaby net-new instrumentation add real breadth on top.",
+    "complexity_drivers": "Undiagnosed defect set on a live production instance; cross-track (MCP Next ↔ Data 360) identity-mapping decision with no named owner; BuyBuyBaby net-new catalog-feed/beacon instrumentation riding inside a nominally remediation-only epic; peak-season (Black Friday/Cyber Monday) change-freeze risk sitting inside the delivery window.",
+    "skills_needed": "MCP Solution/Technical Architect, Senior MCP Developer, QA",
+    "risks": "G0101 (no root-cause defect list — highest-priority gap on the epic, premise the whole track is estimated against); G0102 (identity-mapping owner unassigned); G0104 (holiday change-freeze risk against the fixed schedule); G0109 (instrumentation-approach consistency across brands).",
+    "confidence": "Unknown",
+    "solution_approach": "Remediate BBY US/Overstock MCP via root-cause audit + targeted fixes; bring BuyBuyBaby onto the modern Interactions SDK → Data 360 Web Connector pattern rather than legacy MCP tagging.",
+    "size_if_assumption_breaks": "L; XL if the root-cause audit (G0101) surfaces platform-level re-architecture rather than config/tagging fixes."
+  },
+  {
+    "item_id": "E02",
+    "item_type": "epic",
+    "t_shirt_size": "L",
+    "size_drivers": {
+      "data_model": {"tier": "L", "signal": "4 Customer Data Mesh tables need explicit BigQuery→Data 360 type mapping before any stream can be built [KB: data_360_4-10-2026.md:33675-33727]; no field-mapping work has started."},
+      "integration": {"tier": "L", "signal": "Per-table Zero Copy vs. ingestion vs. hybrid decision across 4 tables with materially different needs, not one pattern applied uniformly [KA-0015]."},
+      "data_volume_migration": {"tier": "L", "signal": "bi_visit and bi_email_daily_summary are plausibly high-volume, multi-year, 3-brand tables risking the 10GB/100M-row Zero Copy ceiling against BigQuery — unvalidated (G0203)."},
+      "sharing_security": {"tier": "M", "signal": "DMA-suppression field on bi_customer_account needs an ingestion path (Zero Copy doesn't support delete-on-incremental-refresh) — a governance-driven pattern constraint, not just a technical one [KB: data_360_4-10-2026.md:54822-54826]."}
+    },
+    "size_rationale": "L — dominant driver is data volume/migration (Zero Copy row-cap risk unvalidated) compounded by the integration dimension (genuine per-table pattern decision, not a default). Data model mapping work is real and unscoped. Breadth bump from 3 dimensions landing L simultaneously.",
+    "complexity_drivers": "4-table BigQuery→Data 360 sync with no per-table pattern decided (G0202); Zero Copy volume ceiling risk on the two highest-volume tables (G0203); suppression-field delete semantics forcing an ingestion path on the governance-sensitive table (G0204); cross-brand identity resolution dependency (G0206) sits upstream of this epic's output being usable.",
+    "skills_needed": "Data Cloud Solution Architect, Data Cloud Technical Architect/Developer, Data Engineer",
+    "risks": "G0202 (central architecture fork — per-table pattern undecided); G0203 (Zero Copy volume-cap risk, unvalidated); G0205 (BigQuery↔Data 360 type mapping unscoped); G0209 (lower-environment BigQuery connectivity for SIT/UAT unconfirmed).",
+    "confidence": "Assumed",
+    "solution_approach": "Per-table hybrid pattern: Zero Copy/Live Query for bi_visit if volume validates under the cap, canonical ingestion for bi_customer_account (suppression/governance), evaluate bi_customer_storefront and bi_email_daily_summary against the same criteria.",
+    "size_if_assumption_breaks": "L; XL if bi_visit or bi_email_daily_summary exceed the Zero Copy row/volume ceiling and require a full ingestion rebuild rather than a Zero Copy stream."
+  },
+  {
+    "item_id": "E03",
+    "item_type": "epic",
+    "t_shirt_size": "L",
+    "size_drivers": {
+      "data_model": {"tier": "L", "signal": "~37-39 Acxiom attributes mapped onto Data 360 records, mixed grain — most attributes are household-level, but Data 360's native resolution grain is Individual; no grounded pattern exists for the join (G0303)."},
+      "integration": {"tier": "M", "signal": "Batch ingestion is the architecturally correct default for a periodic third-party dataset [KA-0015]; connector/cadence specifics still unconfirmed with Acxiom (G0304)."},
+      "sharing_security": {"tier": "M", "signal": "Sensitive-adjacent attributes (income, children, home value) carry CPRA/compliance handling requirements layered on top of standard field-level security."}
+    },
+    "size_rationale": "L — dominant driver is the data model dimension: the household-vs-Individual grain mismatch (G0303) is a genuine, ungrounded architecture decision (likely a custom Household DMO or flattening join), not a standard field-mapping exercise. Sized up per Unknown-confidence rule since this fork has no citable resolution pattern.",
+    "complexity_drivers": "Household-grain Acxiom attributes vs. Data 360's Individual-grain native resolution (G0303, ungrounded); duplicate/padded attribute count needing reconciliation before mapping starts (G0301); unconfirmed brand coverage of the existing live feed changes whether this is 1-brand or 2-brand net-new work (G0302).",
+    "skills_needed": "Data Cloud Solution Architect, Data Cloud Developer, Data Steward (named owner TBD — G0305)",
+    "risks": "G0303 (household-grain resolution, 🔴 ungrounded — the epic's central architecture fork); G0301 (duplicate attribute rows need reconciliation); G0306 (Acxiom license/usage-rights for paid-media activation unconfirmed); G0307 (suppression-enforcement mechanism unconfirmed).",
+    "confidence": "Unknown",
+    "solution_approach": "Batch ingestion of the Acxiom feed into Data 360; resolve household-grain attributes onto Unified Individual via a dedicated Household DMO or lookup-key flattening (architecture decision pending).",
+    "size_if_assumption_breaks": "L; XL if household-grain resolution requires a net-new custom DMO plus a dedicated reconciliation ruleset rather than a flattening join."
+  },
+  {
+    "item_id": "E04",
+    "item_type": "epic",
+    "t_shirt_size": "L",
+    "size_drivers": {
+      "integration": {"tier": "L", "signal": "Cross-entity signal activation runs into Data Space hard isolation (AF3) — needs either a shared Data Space topology or explicit Data Share configuration, neither decided [KA-2766/KA-24122/KA-0016]; near-real-time messaging isn't supported by Data 360's async-only MCP activation path [KA-5871] (G0401)."},
+      "intelligence_ai": {"tier": "M", "signal": "Value segmentation and lifecycle targeting depend on Calculated Insights — standard Data 360 capability, but gated on identity resolution (AF4) and Data Space topology (AF3) landing first (G0403)."},
+      "data_model": {"tier": "M", "signal": "Segment/audience definitions across 5 activation sub-types; dependent on the same identity-resolution grain decision as E03."}
+    },
+    "size_rationale": "L — dominant driver is integration: this epic sits directly on top of two unresolved architecture forks (AF3 cross-entity/Data Space, AF4 identity resolution) that gate its segmentation logic. If 'near-real-time' is a literal requirement, that logic has to be built natively in MCP rather than via Data 360 — a different and larger build than currently scoped.",
+    "complexity_drivers": "Cross-entity activation vs. Data Space isolation (G0402, 🟢 grounded fork, topology undecided); near-real-time requirement vs. Data 360's async-only Segment Activation path to MCP (G0401, 🟢 grounded fork); sequencing dependency on AF3/AF4 landing before segmentation build starts (G0403); historical MCP engagement data isn't backfilled by the connector, creating a cold-start risk for lifecycle/cross-entity targeting (G0406).",
+    "skills_needed": "Data Cloud Solution Architect, MCP Technical Architect, Data Cloud Developer",
+    "risks": "G0401 (near-real-time requirement vs. async-only activation path); G0402 (cross-entity activation vs. Data Space isolation, topology undecided); G0403 (sequencing risk if segmentation starts before AF3/AF4 land); G0406 (no historical backfill — cold-start risk at cutover).",
+    "confidence": "Unknown",
+    "solution_approach": "Scheduled segment audiences, value segmentation, and lifecycle targeting via standard Segment Activation into MCP; cross-entity and near-real-time sub-types pending AF3/AF4 architecture decisions.",
+    "size_if_assumption_breaks": "L; XL if cross-entity activation requires a shared Data Space spanning all 3 brands (rather than scoped Data Share), or if near-real-time messaging must be built natively in MCP outside Data 360."
+  },
+  {
+    "item_id": "E05",
+    "item_type": "epic",
+    "t_shirt_size": "L",
+    "size_drivers": {
+      "integration": {"tier": "L", "signal": "5 ad platforms span 3 different connector tiers: native strategic-partner (Google Ads, Facebook), AppExchange partner package (Criteo — G0502, 🟢 grounded), and unresolved classification (Pinterest/TikTok — G0501, 🔴 ungrounded). Not a uniform build across platforms."},
+      "sharing_security": {"tier": "M", "signal": "Every Activation Target needs a CPRA privacy-type designation with no named decision-owner (G0503); DMA-suppression needs to be a default-on Activation Membership filter, not a manual step, given no recall once an ad serves (G0505)."},
+      "data_model": {"tier": "M", "signal": "Per-platform match-key field mapping (Google Ads' hashed-identifier set differs from Meta's and from Criteo's AppExchange model) is real, unscoped work (G0508); segment-size viability unconfirmed for narrower segment types (G0506)."}
+    },
+    "size_rationale": "L — dominant driver is integration: 3 distinct connector tiers across 5 platforms means this isn't one repeatable build pattern times five. Pinterest/TikTok's unresolved classification (G0501) is the band-widener — sized up per Unknown-confidence rather than assumed equivalent to Google Ads/Facebook.",
+    "complexity_drivers": "3 connector tiers across 5 platforms (native strategic-partner / AppExchange-partner / unresolved); CPRA designation ownership gap on sensitive-adjacent segment types; per-platform match-key mapping; narrow-segment viability unconfirmed (college-affiliated, expectant-family) against platform minimum-audience thresholds.",
+    "skills_needed": "Data Cloud Solution Architect, Data Cloud Developer (AppExchange package config for Criteo), Compliance/Governance reviewer",
+    "risks": "G0501 (Pinterest/TikTok connector tier, 🔴 ungrounded); G0503 (CPRA designation ownership gap); G0504 (ad-platform policy exposure on sensitive segment categories); G0505 (suppression-enforcement architecture); G0506 (segment-size viability unconfirmed).",
+    "confidence": "Unknown",
+    "solution_approach": "Native strategic-partner activation for Google Ads/Facebook; AppExchange-partner package install/config for Criteo; Pinterest/TikTok pending connector-tier confirmation.",
+    "size_if_assumption_breaks": "L; XL if Pinterest and/or TikTok require a custom/unsupported integration path rather than a standard Activation Target or AppExchange package."
+  },
+  {
+    "item_id": "E06",
+    "item_type": "epic",
+    "t_shirt_size": "L",
+    "size_drivers": {
+      "integration": {"tier": "L", "signal": "No source or ingestion mechanism is defined for the product catalog feed powering MCP's recommendation engine — a genuine coverage gap in both project knowledge and the central KB, not just an unanswered client question (G0602, 🔴 ungrounded)."},
+      "ui": {"tier": "M", "signal": "5 named campaigns inject client-side personalization overlays across 3 brand surfaces — commonly missed in standard accessibility audits since injected content isn't in the page's initial DOM (G0606)."},
+      "intelligence_ai": {"tier": "M", "signal": "Decisioning logic for 5 campaigns, with the MCP-vs-Data-360 logic split still undecided (G0604)."}
+    },
+    "size_rationale": "L — dominant driver is the catalog-feed integration gap (G0602): both candidate patterns (direct commerce-platform feed vs. BigQuery→Data 360→MCP) carry very different build and ongoing-maintenance costs, and neither is confirmed. Sized up per Unknown-confidence rather than assumed as a config-only epic.",
+    "complexity_drivers": "Catalog-feed ingestion path undefined (G0602); attribute-availability latency (up to 15 min via Data 360 refresh cadence) needs a fallback-experience design for session-dependent campaigns (G0603); MCP-vs-Data-360 decisioning-logic split undecided, affecting which track owns build effort (G0604); income-based pricing campaign carries a flagged legal/compliance risk distinct from standard data-privacy exposure (G0605).",
+    "skills_needed": "MCP Technical Architect, Senior Experience/Front-end Developer, Data Cloud Developer",
+    "risks": "G0602 (catalog-feed path, 🔴 ungrounded — central architecture fork for the epic); G0603 (attribute-availability latency vs. same-session campaign assumptions); G0604 (MCP-vs-Data-360 logic split undecided); G0605 (income-based pricing legal exposure, flag to Beyond legal before design locks).",
+    "confidence": "Unknown",
+    "solution_approach": "Build the 5 named campaigns on MCP's decisioning/personalization framework consuming Data 360 segments; catalog-feed ingestion path pending architect decision.",
+    "size_if_assumption_breaks": "L; XL if the catalog feed requires a net-new direct-to-MCP integration separate from (and in addition to) the Data 360 BigQuery sync already scoped in E02."
+  },
+  {
+    "item_id": "E07",
+    "item_type": "epic",
+    "t_shirt_size": "L",
+    "size_drivers": {
+      "integration": {"tier": "L", "signal": "Core Braze connection pattern is doubly unresolved: push vs. pull / sync vs. async (G0702, 🟡 KB-only via generic [KA-0138]), and whether open-time rendering needs a new public-facing dynamic-content endpoint (G0703, 🔴 ungrounded — no atom in two sessions of search covers this)."},
+      "data_model": {"tier": "S", "signal": "Only 1 of 7 email use cases is itemized; the remaining 6 are a bare count with no described scope (G0701) — can't be rated beyond a placeholder until enumerated."}
+    },
+    "size_rationale": "L — dominant driver is integration, specifically G0703: if open-time content requires a publicly-reachable, low-latency dynamic endpoint, this is a materially larger build than a one-time data export or send-time API call — potentially the most expensive single use case in the epic. Sized up per Unknown-confidence; the 6 un-itemized use cases are an independent band-widener in the other direction (could be far smaller once enumerated).",
+    "complexity_drivers": "Push vs. pull / sync vs. async connection pattern undecided (G0702); open-time rendering mechanism ungrounded — may require new public infrastructure (G0703); 6 of 7 use cases un-itemized (G0701); ongoing connection-maintenance operating model undefined (G0704); Braze contract/credential-provisioning dependency outside this engagement's control (G0707).",
+    "skills_needed": "Integration Architect, Senior Developer (API/webhook), QA",
+    "risks": "G0701 (6 of 7 use cases un-itemized — can't be sized until enumerated); G0702 (connection architecture, 🟡 KB-only generic); G0703 (open-time render mechanism, 🔴 ungrounded — highest-cost risk in the epic); G0707 (Braze credential/contract access, external dependency against the fixed schedule).",
+    "confidence": "Unknown",
+    "solution_approach": "Build and maintain a Salesforce/Data 360-to-Braze connection for the one named open-time mortgage-follow-up use case; connection direction and rendering mechanism pending architect decision and Braze-side confirmation; remaining 6 use cases pending enumeration.",
+    "size_if_assumption_breaks": "L; XL if open-time content rendering requires new public-facing, highly-available dynamic-content infrastructure on the Salesforce/Data 360 side (per G0703)."
+  }
+]

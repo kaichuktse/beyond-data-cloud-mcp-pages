@@ -1,0 +1,75 @@
+[
+  {
+    "phase_number": 0,
+    "phase_name": "Discovery & Architecture Decisions",
+    "objectives": "Resolve the open architecture forks that gate downstream build: Data Space/Data Share topology (AF3/G0402), identity-resolution grain for household-level Acxiom attributes (AF4/G0303), Pinterest/TikTok connector-tier classification (G0501), Braze connection direction and open-time render mechanism (G0702/G0703), and the MCP Next root-cause audit scope (G0101).",
+    "epics_included": "",
+    "success_criteria": "AF3/AF4 architecture decisions ratified and documented; MCP Next root-cause audit complete and scoped; connector-tier and Braze-pattern forks closed or explicitly deferred with an owner named.",
+    "dependencies": "None — this phase gates everything downstream.",
+    "risks": "G0101, G0303, G0402, G0501, G0702, G0703 — any of these left unresolved past this phase pushes rebuild risk onto E03/E04 per G0403.",
+    "duration_weeks": 3,
+    "duration_source": "user",
+    "kb_sources": []
+  },
+  {
+    "phase_number": 1,
+    "phase_name": "Data 360 Foundation",
+    "objectives": "Stand up Data 360 and sync the 4 BigQuery Customer Data Mesh tables (bi_customer_account, bi_customer_storefront, bi_visit, bi_email_daily_summary); land identity resolution and Data Space topology per the Phase 0 decisions.",
+    "epics_included": "E02",
+    "success_criteria": "4 tables syncing via the confirmed per-table pattern (Zero Copy / ingestion / hybrid); identity resolution live; Data Space topology matches the AF3 decision.",
+    "dependencies": "Phase 0 architecture decisions (AF3/AF4).",
+    "risks": "G0202 (per-table pattern), G0203 (Zero Copy volume ceiling), G0204 (suppression-field delete semantics), G0206 (identity resolution), G0209 (lower-environment BigQuery connectivity).",
+    "duration_weeks": 4,
+    "duration_source": "user",
+    "kb_sources": ["[KA-0015]"]
+  },
+  {
+    "phase_number": 2,
+    "phase_name": "Enrichment & Personalization Activation",
+    "objectives": "Layer Acxiom's ~39-attribute set onto Data 360 customer records across all 3 brands at the resolved identity grain, then activate identity-resolved, enriched segments into MCP (scheduled audiences, value segmentation, lifecycle targeting; near-real-time and cross-entity sub-types pending AF3/AF4 confirmation).",
+    "epics_included": "E03,E04",
+    "success_criteria": "Acxiom attributes land on Unified Individual records across BBY US, Overstock, BuyBuyBaby with suppression/compliance handling; MCP activation live for scheduled/value/lifecycle segments.",
+    "dependencies": "depends on: E02 — Acxiom enrichment and MCP activation both need Data 360's identity resolution and record structure in place first.",
+    "risks": "G0301, G0303, G0306, G0307 (enrichment); G0401 (near-real-time vs. async-only activation), G0402 (cross-entity vs. Data Space isolation), G0403 (sequencing risk), G0406 (no historical backfill).",
+    "duration_weeks": 7,
+    "duration_source": "user",
+    "kb_sources": ["[KA-23760]", "[KA-5871]", "[KA-2766]"]
+  },
+  {
+    "phase_number": 3,
+    "phase_name": "Paid Media & Web Experience",
+    "objectives": "Activate Data 360 segments to the 5 ad platforms (Google Ads, Facebook, Criteo, Pinterest, TikTok) and build the 10 web experience use cases (beacon/catalog-feed setup, person-record enrichment, 5 named campaigns).",
+    "epics_included": "E05,E06",
+    "success_criteria": "5 ad platforms receiving segments via the confirmed connector tier per platform; 10 web use cases live across 3 brand surfaces.",
+    "dependencies": "depends on: E02, E03 — both consume the Data 360 foundation and Acxiom-enriched segments built in Phases 1-2.",
+    "risks": "G0501 (Pinterest/TikTok connector tier), G0503/G0505 (CPRA designation + suppression enforcement), G0602 (catalog-feed ingestion path), G0604 (MCP-vs-Data 360 decisioning split), G0605 (income-based pricing legal exposure).",
+    "duration_weeks": 7,
+    "duration_source": "user",
+    "kb_sources": []
+  },
+  {
+    "phase_number": 4,
+    "phase_name": "Email Campaigns & Braze Integration",
+    "objectives": "Build and launch the 7 brand-neutral email use cases, including the mortgage-follow-up open-time-content use case that hands content/data to Braze.",
+    "epics_included": "E07",
+    "success_criteria": "7 email use cases live; Braze connection built and operating per the Phase 0 connection-pattern decision.",
+    "dependencies": "depends on: E02, E03 — email personalization draws on the same Data 360 foundation and enrichment layer.",
+    "risks": "G0701 (6 of 7 use cases un-itemized at discovery time), G0702/G0703 (Braze connection pattern + open-time render mechanism), G0704 (ongoing connection-maintenance model), G0707 (Braze credential/contract access — external dependency against this schedule).",
+    "duration_weeks": 3,
+    "duration_source": "user",
+    "kb_sources": []
+  },
+  {
+    "phase_number": 5,
+    "phase_name": "MCP Next Remediation",
+    "objectives": "Audit and fix the live BBY US/Overstock MCP implementation; bring BuyBuyBaby onto the modern Interactions SDK → Data 360 Web Connector pattern. Runs concurrently with Phases 1-4, matching the internal staffing draft's own two-track schedule.",
+    "epics_included": "E01",
+    "success_criteria": "Root-cause defects on BBY US/Overstock remediated; BuyBuyBaby net-new instrumentation live.",
+    "dependencies": "Phase 0 architecture decisions (cross-track identity-mapping call, G0102).",
+    "risks": "G0101 (no root-cause defect list), G0102 (identity-mapping owner unassigned), G0104 (holiday change-freeze risk), G0109 (instrumentation-approach consistency across brands).",
+    "duration_weeks": 20,
+    "duration_source": "user",
+    "parallel_track": true,
+    "kb_sources": ["[KB: discovery-notes/Beyond ARI - Fix MCP Waterfall Work - Estimate v2 PDF schedule grid — MCP Next tracked as its own concurrent 20-week lane (Discover wk1 through Scale wk19-20), run alongside, not sequenced after, the Data 360 track]"]
+  }
+]

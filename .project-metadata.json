@@ -1,0 +1,110 @@
+{
+  "project_name": "Beyond Data Cloud & MCP ARI 2026",
+  "created_at": "2026-06-09",
+  "depth_mode": "epic-level",
+  "vertical": "pace",
+  "rfp_tier": null,
+  "benchmark_source": "model-training-data",
+  "completion_status": {
+    "setup": "not-started",
+    "tutorial": "not-started",
+    "discover": "complete",
+    "strategy": "not-started",
+    "requirements": "complete",
+    "design": "complete",
+    "roadmap": "complete",
+    "efficiency": "complete",
+    "commercials": "not-started",
+    "validate": "not-started",
+    "narratives": "not-started",
+    "export": "not-started",
+    "backlog": "not-started",
+    "quantum-leap": "not-started",
+    "slides": "not-started",
+    "rfp": "not-started",
+    "cleanup": "not-started",
+    "wrapup": "not-started",
+    "next": "not-started",
+    "help": "not-started",
+    "contribute": "not-started",
+    "estimate": "complete"
+  },
+  "timeline": {
+    "client_target": null,
+    "user_commitment": {
+      "total_weeks": 24,
+      "rationale": "Matches the internal staffing draft's schedule (Oct 5, 2026 → Mar 15, 2027) carried forward from discovery as the operative target",
+      "set_by": "user"
+    }
+  },
+  "ai_native_qualification": {
+    "verdict": "conditional",
+    "recommended": "not-yet",
+    "override_reason": "Solution Lead override for a customer discussion: M1/M3/M4/M5 (previously unknown) and M2 (previously red, grounded in the phase-gated staffing-draft schedule) are all provisionally assumed yellow to test appetite for AI-native delivery in an upcoming customer meeting. Not evidenced — to be re-confirmed against actual customer answers before this verdict is treated as real.",
+    "must_haves": {
+      "M1": {
+        "rating": "yellow",
+        "evidence": "Assumed for discussion — no named client decision-maker confirmed; to be asked."
+      },
+      "M2": {
+        "rating": "yellow",
+        "evidence": "Assumed for discussion — staffing draft's own schedule is phase-gated (red on hard evidence); assuming the customer could move to a looser cadence, unconfirmed."
+      },
+      "M3": {
+        "rating": "yellow",
+        "evidence": "Assumed for discussion — no executive sponsor named; to be asked."
+      },
+      "M4": {
+        "rating": "yellow",
+        "evidence": "Assumed for discussion — no AI tooling approval stated; to be asked."
+      },
+      "M5": {
+        "rating": "yellow",
+        "evidence": "Assumed for discussion — G0209 BigQuery lower-env connectivity still open with no owner/date; to be asked."
+      }
+    },
+    "supporting": {
+      "S1": {
+        "rating": "yellow",
+        "evidence": "Scope broadly clear; holiday change-freeze risk (G0104) makes speed valuable but not named as the driving motivation."
+      },
+      "S2": {
+        "rating": "unknown",
+        "evidence": "No written security/compliance/brand policy docs or named policy owners in discovery material."
+      },
+      "S3": {
+        "rating": "red",
+        "evidence": "G0001: no client-side roles staffed or named beyond one individual ('Dave')."
+      },
+      "S4": {
+        "rating": "unknown",
+        "evidence": "No characterization of the Beyond relationship in discovery material."
+      },
+      "S5": {
+        "rating": "red",
+        "evidence": "Remediation engagement against a live, undiagnosed-defect MCP implementation (G0101)."
+      },
+      "S6": {
+        "rating": "red",
+        "evidence": "G0004: no CoE, training plan, or change-management ownership named."
+      }
+    },
+    "blockers": [],
+    "route": "augmented",
+    "confirmed_by": "user (Solution Lead) — override for customer-meeting discussion purposes only",
+    "assessed_at": "2026-10-07",
+    "requalified_at": "2026-10-07",
+    "model_version": "1.0"
+  },
+  "salesforce_link": {
+    "status": "linked",
+    "opportunity_id": "006ed00000ahObpAAE",
+    "opportunity_url": "https://org62.lightning.force.com/lightning/r/Opportunity/006ed00000ahObpAAE/view",
+    "licensing_opportunity_id": null,
+    "dsr_id": null,
+    "dsr_url": null,
+    "account_name": "Beyond",
+    "linked_at": "2026-10-07",
+    "last_nudged_at": "2026-10-07"
+  }
+}

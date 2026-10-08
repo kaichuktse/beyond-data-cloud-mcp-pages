@@ -1,0 +1,378 @@
+{
+  "sessions": [
+    {
+      "date": "2026-10-07",
+      "skills_used": [
+        "discover"
+      ],
+      "summary": "Ingested 4 discovery docs (MCP Scope v2, Estimate v2 adjusted practice estimate, and two prior 6.9.26 scoping-questions docs). Confirmed this is a remediation engagement (\"Fix MCP Waterfall Work\") with a parallel Data 360 build-out, not greenfield. Produced the discovery brief.",
+      "friction": [
+        "Both PDFs' auto-converted text extraction mangled table structure badly (especially the Estimate v2 schedule grid) — had to re-read both PDFs directly with the Read tool to recover accurate figures.",
+        "Scope v2 and Estimate v2 were not explicitly cross-referenced in the source docs — had to confirm with the user that the $800K/6,825hr estimate covers the full Current Scope table, not a slice."
+      ],
+      "decisions": [
+        {
+          "decision": "Treat engagement as remediation (MCP Next fix) + Data 360 build-out running in parallel, not a greenfield build",
+          "rationale": "User confirmed \"Fix MCP Waterfall Work\" title is literal, not a naming coincidence"
+        },
+        {
+          "decision": "Current scope domains = BBY US, Overstock, BuyBuyBaby (Zulily and Kirkland Homes/Container Store out)",
+          "rationale": "User confirmed; Scope v2's 'Current Scope' column was ambiguous on domain names"
+        },
+        {
+          "decision": "Acxiom enrichment expansion to all brands is IN scope for this estimate",
+          "rationale": "User confirmed, resolving an ambiguous 'being considered for expansion' note in the source doc"
+        },
+        {
+          "decision": "Braze integration (not just data handoff) is IN scope — Salesforce team builds the connection",
+          "rationale": "User confirmed; source doc only named Braze without describing ownership"
+        },
+        {
+          "decision": "$800,000 / 6,825 hours is an internal staffing draft, not yet shared with the client",
+          "rationale": "User confirmed — carried as planning context only, never as validated/quotable pricing per the pricing gate"
+        }
+      ],
+      "open_threads": [
+        "End-user counts and personas — unknown, deferred to client question list",
+        "Compliance/privacy posture on Acxiom PII-adjacent attributes (income, children, home value, move date) — deferred to client question list",
+        "Data migration scope (legacy MCP config/segments) — not mentioned anywhere, deferred to client question list",
+        "Governance/change management (CoE, training, adoption ownership post-launch) — not mentioned, deferred to client question list",
+        "BigQuery schema completeness — client's own unresolved question (should more than the 4 listed tables sync to Data 360?)",
+        "Paid-media segment volume per channel — client's own unresolved question",
+        "outputs/Mars-Agentforce-Marketing-Global-Org-Architecture-Risk.docx/.py appear misfiled in this project (different client) — flagged to user, not yet resolved"
+      ],
+      "next_steps": [
+        "Run requirements skill to define epics from the confirmed scope (MCP Next remediation epics + Data 360 build epics)"
+      ]
+    },
+    {
+      "date": "2026-10-07",
+      "skills_used": [
+        "requirements"
+      ],
+      "summary": "Defined 7 epics (E01 MCP Next Remediation, E02 Data 360 Foundation & BigQuery Sync, E03 Third-Party Enrichment/Acxiom, E04 MCP Personalization Activation, E05 Paid Media Activation, E06 Web Experience Campaigns, E07 Email Campaigns & Braze Integration) and ran full gap analysis across all 7 — 63 gaps total (6 project-level + 57 epic-scoped). Saved epics.json + gaps.json, generated CSVs.",
+      "friction": [
+        "No central-KB atom names Braze specifically for E07's connector pattern — only a generic Salesforce-to-external integration-pattern guide (KA-0138). User approved proceeding with a 🟡 flag rather than pausing to source more documentation.",
+        "Several architecture forks surfaced only after epic-analyst agents dug into the project's own layer-1 knowledge doc (data_360_4-10-2026.md) rather than the central KB — e.g. G0502's AppExchange-vs-strategic-partner connector tier split for Criteo was buried at line 124613-124619, not in any central-KB atom."
+      ],
+      "decisions": [
+        {
+          "decision": "Approved 7-epic skeleton as drafted (no modifications)",
+          "rationale": "User reviewed grounding summary and stub check, approved and saved as-is"
+        },
+        {
+          "decision": "E07 (Braze integration) ships with a 🟡 grounding flag rather than pausing for more documentation",
+          "rationale": "User explicitly chose 'Proceed with 🟡 flag' when asked how to handle the missing Braze-specific KB atom"
+        }
+      ],
+      "open_threads": [
+        "Gap count (63) is well past the >15-gap Phase 0 recommendation threshold in the requirements skill — Phase 0 (a dedicated discovery/architecture-decision sprint before design locks) should be proposed to the user.",
+        "4 architecture forks are 🔴 ungrounded and need direct resolution before design: G0303 (household-grain Acxiom attributes vs. Data 360 Individual-grain identity resolution), G0501 (Pinterest/TikTok connector-tier status — 3 conflicting platform lists in the client's own KB), G0602 (catalog-feed-to-MCP ingestion path for recommendation engine), G0605 (income-based pricing legal/regulatory exposure), G0703 (open-time email content render mechanism for Braze).",
+        "7 architecture forks are 🟢 grounded via central-KB atoms: G0102 ([KA-23760]), G0109 ([KA-3063]/[KA-3067]), G0202/G0204/G0206 ([KA-0015]/[KA-23912]), G0304 ([KA-0015]/[KA-23607]), G0401 ([KA-5871]), G0402 ([KA-2766]/[KA-24122]/[KA-0016]), G0502 (project knowledge/ primary, central KB context-only).",
+        "1 fork is 🟡 KB-only: G0702 (Braze connection architecture — only generic KA-0138 applies).",
+        "Discipline gaps (experience-design + governance) surfaced across nearly every epic and should be grouped as a dedicated client conversation: G0106/G0107 (E01), G0207 (E02), G0305 (E03), G0405/G0407 (E04), G0503/G0507 (E05), G0606/G0607 (E06), G0705/G0706 (E07).",
+        "G0401 is a potentially load-bearing finding: Data 360 → MCP activation is async-only (Segment Activation, 12-24hr cadence) — MCP is not in Data 360's Data Action Target list. If the client's 'near-real-time' language is literal, that logic has to live in MCP's own native layer, not Data 360's."
+      ],
+      "next_steps": [
+        "Present the Step 5 Gap Summary (Phase 0 recommendation, architecture-fork checkpoint, discipline-gap callout)",
+        "Natural next skill: design (architecture + T-shirt estimates) — propose, don't start unprompted"
+      ]
+    },
+    {
+      "date": "2026-10-07",
+      "skills_used": [
+        "design"
+      ],
+      "summary": "Drafted and approved the Architectural Skeleton (Architecture Foundations AF1-AF5 + epic-by-epic Solution by Business Process), grounded via 9 central-KB atoms read this session (KA-5871, KA-2766, KA-0016, KA-0138, KA-3063, KA-3067, KA-9268, KA-9266, KA-23607) plus atoms already known from requirements (KA-23760, KA-24122, KA-0015, KA-23912). Wrote outputs/01-solution.md. Sized all 7 epics (all L; E01 and E03 flagged Unknown confidence) in estimates.json. Persisted the 7 load-bearing assumptions from the skeleton as new gaps.json rows (G0801-G0807, category Assumption, cross-referencing their requirements-phase gap twins).",
+      "friction": [
+        "doc_search temp-result files from the prior session were single-line JSON objects with a top-level results array, not bare arrays — first jq extraction attempt (assuming a bare array) returned nothing; corrected to `.results[] | select(.content | contains(\"id: KA-XXXX\"))`.",
+        "G0602 (catalog-feed-to-MCP ingestion path) newly resolved this session via Loyalty-Management-sourced atoms (KA-9268/KA-9266) that are conceptually transferable to MCP's recommendation engine — upgraded from 🔴 in requirements to 🟢 in design."
+      ],
+      "decisions": [
+        {
+          "decision": "Approved architectural skeleton as drafted (AF1-AF5 + 7 epic entries), no modifications",
+          "rationale": "User selected 'Approve and continue' after reviewing the grounding summary and architecture-fork checkpoint"
+        },
+        {
+          "decision": "Approved all 7 epic estimates as rated (all t_shirt_size L; E01 and E03 confidence Unknown with size_if_assumption_breaks noted)",
+          "rationale": "User selected 'Approve estimates' without requesting changes"
+        },
+        {
+          "decision": "No new ADR drafted this session",
+          "rationale": "Held to the persona's default-zero bar — the AF1-AF2 org/Business-Unit/Data-Space strategy was considered as an ADR candidate but is epic-scoped reasoning transcribed into outputs/01-solution.md, not a cross-engagement premise distinct from what design already documents"
+        }
+      ],
+      "open_threads": [
+        "2 architecture forks remain 🔴 ungrounded even after the central-KB sweep: G0303/AF4 (household-grain Acxiom attributes vs. Data 360's Individual-grain identity resolution — no atom covers household-grain resolution) and G0501 (Pinterest/TikTok connector-tier classification — 3 conflicting lists in the client's own KB, no central-KB atom resolves it). Both need direct architect/vendor confirmation, not more searching.",
+        "G0702 (Braze connection direction: push vs. pull, sync vs. async) stays 🟡 KB-only (generic KA-0138 only). G0703 (Braze open-time render mechanism) stays 🔴 — flagged as potentially the single most expensive use case in E07 if it requires new public-facing dynamic-content infrastructure.",
+        "G0605 (income-based pricing legal exposure) reclassified as a compliance/legal risk carried forward from requirements, not an architecture fork design can resolve — needs Beyond's legal function, not a KB search.",
+        "All 7 epics sized L; 2 (E01, E03) carry Unknown confidence with explicit size_if_assumption_breaks (both to XL) tied to G0803/G0101 (E01 root-cause depth) and G0802/G0303 (E03 household-grain resolution complexity).",
+        "7 new Assumption-category gaps written (G0801-G0807), each cross-referencing its requirements-phase twin gap (G0402, G0303, G0101, G0304, G0501, G0605, G0703 respectively) rather than duplicating the finding — revise should treat the pair as one thread if either breaks."
+      ],
+      "next_steps": [
+        "Natural next skill: roadmap (sequencing + timeline range) — propose, don't start unprompted. roadmap should sequence E02 (foundation) and the AF3/AF4 architecture decisions ahead of E04/E03's dependent work per the sequencing risk already flagged in G0403.",
+        "commercials remains gated on a user-supplied, validated rate — not run this session."
+      ]
+    },
+    {
+      "date": "2026-10-07",
+      "skills_used": [
+        "roadmap"
+      ],
+      "summary": "Allocated the user's 24-week commitment across a 6-phase structure using derive-hours.py --allocate (never by hand): Phase 0 Discovery & Architecture Decisions (3wk fixed) → Phase 1 Data 360 Foundation/E02 (4wk) → Phase 2 Enrichment & Personalization Activation/E03+E04 (7wk) → Phase 3 Paid Media & Web Experience/E05+E06 (7wk) → Phase 4 Email & Braze/E07 (3wk) → Phase 5 MCP Next Remediation/E01 (20wk, parallel_track, fixed). Critical path sums to exactly 24wk; Phase 5 runs alongside it per the staffing draft's own two-track schedule. Wrote depends_on to epics.json (E03/E04→E02; E05/E06/E07→E02,E03). Wrote data/roadmap.json + outputs/02-delivery-plan.md, persisted 3 phasing assumptions as new gaps (G0808-G0810).",
+      "friction": [
+        "Re-read the Estimate v2 PDF's schedule grid directly (not from a lossy context-compaction summary) and found MCP Next and Data 360 run as two concurrent tracks over the full 24 weeks in the client's own staffing draft — not sequential phases as two earlier trial dry-runs had assumed. Pivoted the Phase Skeleton to use parallel_track: true on the MCP Next phase rather than bundling E01 sequentially with E02."
+      ],
+      "decisions": [
+        {
+          "decision": "MCP Next Remediation (E01) modeled as a parallel_track phase (20 weeks, fixed, excluded from the critical-path sum) rather than sequenced into the Data 360 critical path",
+          "rationale": "Directly grounded in the internal staffing draft's own schedule grid, which runs MCP Next as its own concurrent lane (Discover wk1 through Scale wk19-20) alongside the Data 360 track"
+        },
+        {
+          "decision": "E04 depends_on E02 (and transitively E03, bundled with it in Phase 2); E05/E06/E07 depend_on E02+E03",
+          "rationale": "G0402/G0403 explicitly state the sequencing risk — segmentation/activation work started before identity resolution and Data Space topology land needs to be rebuilt"
+        },
+        {
+          "decision": "fixed_external omitted from timeline.user_commitment",
+          "rationale": "The 24-week window is an internal staffing draft never shared with the client (confirmed via decision_log + direct re-read of G0104/G0209/G0707), not a client-imposed immovable date — Step 0.65 scope-cut mode is not applicable"
+        },
+        {
+          "decision": "Approved 6-phase structure as proposed, no modifications",
+          "rationale": "User selected 'Approve phases' after reviewing the grounding summary and critical-path statement"
+        }
+      ],
+      "open_threads": [
+        "G0808: assumption that E03 and E04 can run concurrently within Phase 2 once E02 lands — would need to resequence if Acxiom attributes turn out load-bearing to E04's segmentation logic",
+        "G0809: assumption that E05 and E06 can run concurrently within Phase 3 — would need to resequence if the catalog-feed path (G0602) becomes a shared blocking prerequisite",
+        "G0810: Phase 0 (3wk) and Phase 5 (20wk) are judgment-call fixed weeks, not T-shirt-derived — Phase 5's 20wk is grounded in the staffing draft's own MCP Next lane length; Phase 0's 3wk is sized to the 6 open forks it must resolve",
+        "Training/change-management discipline gap (flagged across 7+ epics in requirements) still unresolved — recommend a deliberate client conversation before this plan locks",
+        "4 architecture forks remain 🔴/🟡 ungrounded going into delivery: G0303 (household-grain resolution), G0501 (Pinterest/TikTok connector tier), G0602 (catalog-feed ingestion path), G0702/G0703 (Braze connection + render mechanism) — all sit inside Phase 0's scope to resolve"
+      ],
+      "next_steps": [
+        "Natural next skill: estimate (named roster/team) — propose, don't start unprompted.",
+        "efficiency, validate, narratives, export remain available in the natural progression.",
+        "commercials remains gated on a user-supplied, validated rate."
+      ]
+    },
+    {
+      "date": "2026-10-07",
+      "skills_used": [
+        "efficiency"
+      ],
+      "summary": "Ran the AI-native qualification procedure (no prior verdict on file) grounded in direct re-reads of .discovery-context.md and gaps.json: computed verdict not-yet / route augmented (M2 iterative-working-model red — the staffing draft's own schedule is phase-gated, not daily-cadence; M1/M3/M4/M5 unknown — no evidence either way; S3/S5/S6 read red, reinforcing not-yet). User confirmed the verdict as computed. Persisted to .project-metadata.json.ai_native_qualification. Confirmed the ownership split: all 7 epics stay Salesforce-PS-delivered; 4 adjacent items are client-owned (Acxiom contract/licensing, BigQuery schema/Data Mesh maintenance, Governance/CoE/training per G0004, UAT execution & client-side test resourcing) — affects roster composition in estimate's Step 3, not epic shape. Ran efficiency at category-only fidelity (no resource-plan.json yet): regulated-legacy realization factor (0.25-0.35) given the live-production remediation (G0101) + 3 open compliance gates with no named owner (G0503/G0505/G0605); readiness scored Low (1/8 — delivery velocity 0, data/environment hygiene 0 per G0209, legal/compliance posture 0, AI tooling posture left unscored). Realized band ~6-16% at Low readiness. No AI-native band computed (not-yet verdict) — path to it names all 5 must-haves. Wrote data/efficiency.json + outputs/artifacts/efficiency-analysis.md, ran json-to-csv.py.",
+      "friction": [],
+      "decisions": [
+        {
+          "decision": "AI-native qualification verdict: not-yet / route augmented — confirmed by user as computed, no override",
+          "rationale": "M2 (iterative working model) rates red on the staffing draft's own phase-gated schedule grid; M1/M3/M4/M5 all unknown for lack of any evidence in discovery material"
+        },
+        {
+          "decision": "Ownership split: all 7 epics (E01-E07) remain Salesforce-PS-delivered; 4 adjacent-responsibility items are client-owned — Acxiom contract/licensing & data-rights, BigQuery schema/Data Mesh ongoing maintenance, Governance/CoE/change management/training (G0004), UAT execution & client-side test resourcing",
+          "rationale": "User confirmed via multi-select; affects roster composition (no SF-staffed UAT/BigQuery-DBA/CoE-training roles) in estimate's Step 3, not the SF-owned epic shape"
+        },
+        {
+          "decision": "Lanes to compare in estimate: traditional vs. augmented, not AI-native",
+          "rationale": "User selected 'Traditional vs. augmented (recommended)' — the not-yet qualification verdict means no priced AI-native lane; AI-native shows as a named path/motivator instead"
+        },
+        {
+          "decision": "Comparison anchor: traditional-anchored, derived here",
+          "rationale": "Stated as the approach taken rather than asked — no supplied/committed AI-native figure exists and the engagement isn't AI-native-committed, so this was the only coherent choice"
+        },
+        {
+          "decision": "Realization-factor row: regulated-legacy (0.25-0.35), not mixed",
+          "rationale": "Live-production remediation context (G0101) plus 3 open compliance gates with no named owner (G0503, G0505, G0605) outweigh the otherwise-standard-enterprise shape"
+        }
+      ],
+      "open_threads": [
+        "Readiness score is Low (1/8) — AI tooling posture left unscored (no evidence either way), delivery velocity/data hygiene/compliance posture all scored 0. Moving to Mid readiness needs G0209 resolved and named owners for G0503/G0505/G0605.",
+        "No AI-native band shown — path to qualified/conditional needs all 5 must-haves (M1-M5) to clear, starting with M2 (move off phase-gated cadence to daily build/demo/decide)."
+      ],
+      "next_steps": [
+        "Resume estimate: derive traditional lane duration (24wk, already committed) and augmented lane duration (24wk compressed by efficiency.json's current-scenario realized_band, ~5-13% at Low readiness)",
+        "Author named roster per lane respecting the client-owned-scope exclusions just confirmed",
+        "Price via commercials if a rate is available, else carry pricing-deferred",
+        "Run SSSL validation gate, persist data/estimate-comparison.json + data/resource-plan.json, render outputs/artifacts/estimate-comparison.md"
+      ]
+    },
+    {
+      "date": "2026-10-07",
+      "skills_used": [
+        "estimate"
+      ],
+      "summary": "Saved lane comparison: traditional anchor (R01-R09, 10 seats, 24wk, ~8.62 FTE, 8,280 hrs) vs conditional AI-native (Q01-Q07, 9 seats, 16-21wk via native_band ~13-34%, ~7.27 FTE, 6,980 hrs). Pricing deferred. Wrote estimate-comparison.json, resource-plan.json (anchor roster), outputs/artifacts/estimate-comparison.md.",
+      "friction": [
+        "Scratch AI-native roster was not persisted across compaction; rebuilt from core-accountability floor.",
+        "validate-data.py pricing-leak FAIL is pre-existing: 00-discovery-brief.md quotes the internal $800K/6,825hr staffing draft."
+      ],
+      "decisions": [
+        {
+          "decision": "Solution Lead approved both rosters as drafted",
+          "rationale": "Selected 'Approve both as drafted' at the sign-off gate"
+        }
+      ],
+      "open_threads": [
+        "efficiency-analysis.md still narrates not-yet / no native band; stale vs conditional override",
+        "Pages site for Beyond not yet built"
+      ],
+      "next_steps": [
+        "Build Beyond pages site",
+        "validate",
+        "narratives"
+      ]
+    }
+  ],
+  "preferences": {
+    "terminology": {
+      "MCP": "Marketing Cloud Personalization (formerly Interaction Studio / Evergage)",
+      "MCP Next": "The remediation/modernization track for the existing MCP implementation",
+      "Data 360": "Beyond's name for Salesforce Data Cloud",
+      "Data Mesh": "Beyond's internal BigQuery schema/table naming convention for customer data",
+      "Dave's SPW / Dave's LOE": "Internal scope and level-of-effort spreadsheets referenced in source docs via Google Sheets links, not included in the discovery package"
+    },
+    "audience_default": "executive"
+  },
+  "decision_log": [
+    {
+      "date": "2026-10-07",
+      "area": "scope",
+      "decision": "Engagement is remediation (MCP Next) + Data 360 build-out in parallel, not greenfield",
+      "rationale": "Confirmed by user against the literal \"Fix MCP Waterfall Work\" title",
+      "rejected": [
+        "Greenfield waterfall build (name coincidence)",
+        "Mixed remediation+build split"
+      ]
+    },
+    {
+      "date": "2026-10-07",
+      "area": "scope",
+      "decision": "In-scope domains: BBY US, Overstock, BuyBuyBaby",
+      "rationale": "User confirmed against ambiguous Scope v2 'Current Scope' column",
+      "rejected": [
+        "Different 3-domain combination",
+        "Domain list still TBD with client"
+      ]
+    },
+    {
+      "date": "2026-10-07",
+      "area": "scope",
+      "decision": "Acxiom all-brand expansion in scope for this estimate",
+      "rationale": "User confirmed",
+      "rejected": [
+        "Acxiom expansion as separate future phase",
+        "Leave as open question"
+      ]
+    },
+    {
+      "date": "2026-10-07",
+      "area": "scope",
+      "decision": "Braze integration build is in scope (not just a data/content handoff)",
+      "rationale": "User confirmed",
+      "rejected": [
+        "Braze as client-owned handoff, out of our build boundary",
+        "Leave as open question"
+      ]
+    },
+    {
+      "date": "2026-10-07",
+      "area": "commercials",
+      "decision": "$800K / 6,825 hrs treated as internal staffing draft, not validated/quotable pricing",
+      "rationale": "User confirmed the figure has not been shared with the client",
+      "rejected": [
+        "Treat as a client-facing commercial anchor to validate/revise"
+      ]
+    },
+    {
+      "date": "2026-10-07",
+      "area": "scope",
+      "decision": "7-epic skeleton approved as drafted: E01 MCP Next Remediation, E02 Data 360 Foundation & BigQuery Sync, E03 Third-Party Enrichment (Acxiom), E04 MCP Personalization Activation, E05 Paid Media Activation, E06 Web Experience Campaigns, E07 Email Campaigns & Braze Integration",
+      "rationale": "User selected 'Approve and save' after reviewing the grounding summary and stub check",
+      "rejected": [
+        "Modify before saving",
+        "Start over"
+      ]
+    },
+    {
+      "date": "2026-10-07",
+      "area": "grounding",
+      "decision": "E07's Braze integration pattern ships with a 🟡 KB-only flag (generic [KA-0138] only, no Braze-specific atom) rather than pausing to source more documentation",
+      "rationale": "User selected 'Proceed with 🟡 flag (recommended)' when asked how to handle the ungrounded Braze connector pattern",
+      "rejected": [
+        "Pause — add a Braze-specific doc and re-run"
+      ]
+    },
+    {
+      "date": "2026-10-07",
+      "area": "architecture",
+      "decision": "Approved architectural skeleton as drafted: single Data 360 instance (AF1), one Business Unit/Data Space per brand (AF2), cross-entity activation and household-grain identity resolution left as explicit open architecture decisions (AF3/AF4) rather than resolved by default",
+      "rationale": "User selected 'Approve and continue' after reviewing the grounding summary and architecture-fork checkpoint",
+      "rejected": [
+        "Adjust before continuing"
+      ]
+    },
+    {
+      "date": "2026-10-07",
+      "area": "estimation",
+      "decision": "Approved all 7 epic T-shirt estimates as rated — all L, with E01 and E03 at Unknown confidence and explicit size_if_assumption_breaks (both to XL)",
+      "rationale": "User selected 'Approve estimates' without requesting changes",
+      "rejected": [
+        "Adjust estimates before saving"
+      ]
+    },
+    {
+      "date": "2026-10-07",
+      "area": "timeline",
+      "decision": "fixed_external omitted from timeline.user_commitment — 24-week window is an internal staffing draft, not a client-committed immovable date",
+      "rationale": "Re-confirmed via direct re-read of G0104/G0209/G0707 plus the existing decision_log entry that the $800K/6,825hr figure (same schedule) was never shared with the client",
+      "rejected": [
+        "Set fixed_external: true and route into Step 0.65 scope-cut mode"
+      ]
+    },
+    {
+      "date": "2026-10-07",
+      "area": "roadmap",
+      "decision": "Approved 6-phase structure: Phase 0 Discovery & Architecture Decisions (3wk) → Phase 1 Data 360 Foundation/E02 (4wk) → Phase 2 Enrichment & Personalization/E03+E04 (7wk) → Phase 3 Paid Media & Web/E05+E06 (7wk) → Phase 4 Email & Braze/E07 (3wk) → Phase 5 MCP Next Remediation/E01 (20wk, parallel_track)",
+      "rationale": "User selected 'Approve phases'; MCP Next modeled as a parallel track per the internal staffing draft's own concurrent two-track schedule grid, not sequenced after the Data 360 critical path",
+      "rejected": [
+        "Sequential 5-phase structure bundling E01+E02 together (two earlier trial dry-runs, discarded once the PDF's two-track schedule was re-confirmed)"
+      ]
+    },
+    {
+      "date": "2026-10-07",
+      "area": "scope",
+      "decision": "Ownership split: all 7 epics (E01-E07) stay Salesforce-PS-delivered; 4 adjacent-responsibility items are client-owned and excluded from the SF roster — Acxiom contract/licensing & data-rights (SF still builds the E03 ingestion pipeline), BigQuery schema/Data Mesh ongoing maintenance (SF builds the E02 sync, not the source schema going forward), Governance/CoE/change management/training (G0004), UAT execution & client-side test resourcing",
+      "rationale": "User confirmed via multi-select during the efficiency session; this is a reclassification of adjacent responsibilities, not a reduction of SF-owned epic scope — it affects roster composition only (no SF-staffed UAT/BigQuery-DBA/CoE-training roles) in estimate's Step 3",
+      "rejected": [
+        "Absorb one or more of the 4 items onto the SF roster",
+        "Leave ownership unstated and ask again at estimate time"
+      ]
+    },
+    {
+      "date": "2026-10-07",
+      "area": "efficiency",
+      "decision": "AI-native qualification verdict: not-yet / route augmented",
+      "rationale": "User confirmed the computed verdict with no override — M2 (iterative working model) rates red on the staffing draft's own phase-gated schedule grid; M1/M3/M4/M5 all unknown for lack of any evidence in discovery material; persisted to .project-metadata.json.ai_native_qualification",
+      "rejected": [
+        "Override to qualified/conditional despite the red/unknown must-haves"
+      ]
+    },
+    {
+      "date": "2026-10-07",
+      "area": "efficiency",
+      "decision": "Lanes to compare in estimate: traditional vs. augmented, not AI-native; traditional-anchored",
+      "rationale": "The not-yet qualification verdict means no priced AI-native lane (it shows only as a named path/motivator); no supplied/committed AI-native figure exists, so traditional-anchored was the only coherent derivation direction",
+      "rejected": [
+        "Price a conditional AI-native lane alongside augmented",
+        "AI-native-anchored with traditional as a notional gross-up"
+      ]
+    },
+    {
+      "date": "2026-10-07",
+      "area": "estimate",
+      "decision": "Traditional-anchored comparison vs conditional AI-native lane, pricing deferred; AI-native roster rebuilt as 7 roles with one floor per workstream",
+      "rationale": "Solution Lead approved at SSSL gate; AI-native lane is override-conditional and for discussion only",
+      "rejected": [
+        "Single shared AI-native core across both workstreams"
+      ]
+    }
+  ]
+}
